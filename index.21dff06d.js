@@ -1,2 +1,0 @@
-const e=document.querySelector("#countries");e.addEventListener("click",(function(){return fetch("https://restcountries.com/v3.1/all").then((e=>e.json())).then((o=>{let n="";o.sort(((e,o)=>e.name.common.localeCompare(o.name.common))).forEach((e=>{n+=`<option value="${e.name.common}">${e.name.common}</option>`})),e.innerHTML=n})).catch((e=>console.log(`${e.name}: ${e.message}`)))}));
-//# sourceMappingURL=index.21dff06d.js.map

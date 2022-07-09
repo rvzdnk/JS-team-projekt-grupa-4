@@ -1,2 +1,0 @@
-!function(){var n=document.querySelector("#countries");n.addEventListener("click",(function(){return fetch("https://restcountries.com/v3.1/all").then((function(n){return n.json()})).then((function(o){var c="";o.sort((function(n,o){return n.name.common.localeCompare(o.name.common)})).forEach((function(n){c+='<option value="'.concat(n.name.common,'">').concat(n.name.common,"</option>")})),n.innerHTML=c})).catch((function(n){return console.log("".concat(n.name,": ").concat(n.message))}))}))}();
-//# sourceMappingURL=index.ddf15efb.js.map

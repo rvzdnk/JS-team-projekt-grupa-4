@@ -7,7 +7,7 @@ const selectDrop = document.querySelector('#countries');
 
 export function chooseCountries() {
         const markup = countries.map((country) =>
-        `<option value ="${country.countryCode}>${country.name}</option>`).sort()
+        `<option value ="${country.countryCode}">${country.name}</option>`).sort()
         .join("");
 
         selectDrop.insertAdjacentHTML('beforeend',markup);

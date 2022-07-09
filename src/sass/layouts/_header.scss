@@ -1,0 +1,139 @@
+.main-header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-title__header {
+  width: 212px;
+  min-height: 44px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.222;
+  color: $secondary-color;
+  padding-top: 78px;
+  text-align: center;
+  margin: 0 auto;
+}
+// logo
+
+.logo-svg {
+  position: absolute;
+  top: -30;
+  left: 0;
+  width: 107px;
+}
+
+// background picture
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-mobile.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 364px;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+  screen and (min-resolution: 192dpi) and (min-width: 320px),
+  screen and (min-resolution: 2dppx) and (min-width: 320px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-mobile@2x.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 364px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-tablet.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 364px;
+  }
+  .logo-svg {
+    width: 178px;
+    top: 0;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-tablet@2x.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 364px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-desktop.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 446px;
+  }
+  .logo-svg {
+    width: 238px;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
+  screen and (min-resolution: 192dpi) and (min-width: 1200px),
+  screen and (min-resolution: 2dppx) and (min-width: 1200px) {
+  .main-header {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('../images/background/background-desktop@2x.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 446px;
+  }
+}
+
+//searchBar
+.form__search,
+.form__dropdown {
+  width: 270px;
+  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #939393;
+  padding-left: 28px;
+}
+.form__search,
+.page-title__header {
+  margin-bottom: 25px;
+}

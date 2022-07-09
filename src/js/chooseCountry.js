@@ -13,4 +13,4 @@ export function chooseCountries() {
         selectDrop.insertAdjacentHTML('beforeend',markup);
       }
 
-selectDrop.addEventListener('submit', chooseCountries);
+selectDrop.addEventListener('click', chooseCountries);

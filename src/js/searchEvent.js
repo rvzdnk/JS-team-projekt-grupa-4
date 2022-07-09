@@ -4,11 +4,12 @@ import { fetchEvents } from "./fetchEvents";
 const searchForm = document.querySelector(".form");
 const searchInput = document.querySelector(".form__search");
 const selectDrop = document.querySelector('#countries');
+const events = document.querySelector(".events");
 
-let pageNumber;
+
 
 function searchEvents (){
-    fetchEvents(searchInput.value, selectDrop.value, pageNumber)
+    fetchEvents(searchInput.value, selectDrop.value)
     .then(data =>{
         renderEvents(data)
     })
@@ -17,38 +18,27 @@ function searchEvents (){
     });
 }
 
+function renderEvents(data){
 
-
-const eventImage = _embedded.events.images[0].url;
-const eventName = _embedded.events.name;
-const eventDate = _embedded.events.dates.start.localDate;
-const eventVenue = _embedded.venues.name;
-
-function renderEvents(_embedded){
-
-
-    const eventDetail = _embedded
+    const eventDetail = data
             .map(
                 ({
-                eventImage,
-                eventName,
-                eventDate,
-                eventVenue
+                name, dates, images, _embedded
                 }) => {
                     return `
                     <div class ="events__item">
                         <a>
-                            <img class="event__img" src="${eventImage}"/>
+                            <img class="event__img" src="${images[0].url}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">
-                            ${eventName}
+                            ${name}
                             </p>
                             <p class="events__info-date">
-                            ${eventDate}
+                            ${dates.start.localDate}
                             </p>
                             <p class="events__info-venue">
-                            ${eventVenue}
+                            ${_embedded.venues[0].name}
                             </p>
                             
                         </div>
@@ -60,13 +50,4 @@ function renderEvents(_embedded){
         
             events.insertAdjacentHTML('beforeend', eventDetail);
 }
-
-const newSearch = e => {
-    e.preventDefault();
-    pageNumber = 1;
-    events.innerHTML = '';
-    console.log(`start: ${pageNumber}`);
-    searchEvents();
-}
-
-searchForm.addEventListener('submit', newSearch)
+searchEvents();

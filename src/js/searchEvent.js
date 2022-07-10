@@ -8,7 +8,7 @@ const events = document.querySelector(".events");
 
 
 
-function searchEvents (){
+export function searchEvents (){
     fetchEvents(searchInput.value, selectDrop.value)
     .then(data =>{
         renderEvents(data)
@@ -18,12 +18,12 @@ function searchEvents (){
     });
 }
 
-function renderEvents(data){
+ export function renderEvents(data){
 
-    const eventDetail = data
-            .map(
+    const eventDetail = 
+         data.map(
                 ({
-                name, dates, images, _embedded
+                name, dates, images, _embedded,
                 }) => {
                     return `
                     <div class ="events__item">

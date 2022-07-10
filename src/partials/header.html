@@ -2,9 +2,28 @@
   <div class="container">
     <div class="logo">
       <a>
-        <svg class="logo-svg">
-          <use href="./images/logo.svg#icon-logo"></use>
-        </svg>
+        <picture>
+          <source
+            srcset="./images/logo.png 1x, ./images/logo@2x.png 2x"
+            media="(min-width: 1200px)"
+          />
+
+          <source
+            srcset="./images/logo-tablet.png 1x, ./images/logo-tablet@2x.png 2x"
+            media="(min-width: 768px)"
+          />
+
+          <source
+            srcset="./images/logo-mobile.png 1x, ./images/logo-mobile@2x.png 2x"
+            media="(min-width: 320px)"
+          />
+
+          <img
+            class="logo-img"
+            src="./images/logo-mobile.png"
+            alt="logo-event-booster"
+          />
+        </picture>
       </a>
     </div>
     <div class="page-title">
@@ -12,16 +31,25 @@
     </div>
 
     <form class="form">
-      <input
-        class="form__search"
-        name="search"
-        type="search"
-        placeholder="Start searching"
-        autocomplete="off"
-      />
-      <select class="form__dropdown" id="countries" name="countries">
+      <div class="form__search__container">
+        <input
+          class="form__search"
+          name="search"
+          type="search"
+          placeholder="Start searching"
+          autocomplete="off"
+        />
+        <svg class="search-icon" width="12px" height="12px">
+          <use href="./images/icons.svg#icon-search-icon"></use>
+        </svg>
+      </div>
+      <div class="form__dropdown__container">
         <option value="Choose country">Choose country</option>
-      </select>
+        <select class="form__dropdown" id="countries" name="countries"></select>
+        <svg class="filter-icon" width="15" height="10">
+          <use href="./images/icons.svg#icon-filter-icon"></use>
+        </svg>
+      </div>
     </form>
   </div>
 </header>

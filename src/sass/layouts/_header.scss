@@ -4,8 +4,7 @@
 }
 
 .page-title__header {
-  width: 212px;
-  min-height: 44px;
+  max-width: 212px;
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
@@ -15,13 +14,56 @@
   text-align: center;
   margin: 0 auto;
 }
-// logo
 
-.logo-svg {
+// logo
+.logo {
   position: absolute;
-  top: -30;
+  top: 0;
   left: 0;
   width: 107px;
+}
+.search-icon,
+.filter-icon {
+  position: absolute;
+  top: 14px;
+  right: 30px;
+}
+//searchBar
+.form__search__container,
+.form__dropdown__container {
+  width: 270px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding-top: 10px;
+  position: relative;
+}
+.form__search,
+.form__dropdown,
+option {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #939393;
+  outline: none;
+  max-width: 270px;
+}
+option,
+.form__search__container {
+  text-align: left;
+  padding-left: 30px;
+}
+.form__dropdown {
+  opacity: 0;
+}
+.form__search__container,
+.page-title__header {
+  margin-bottom: 25px;
+}
+::placeholder {
+  color: #939393;
 }
 
 // background picture
@@ -36,6 +78,7 @@
     background-position: center;
     background-size: cover;
     min-height: 364px;
+    position: relative;
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
@@ -66,9 +109,22 @@
     background-size: cover;
     min-height: 364px;
   }
-  .logo-svg {
+  .logo {
     width: 178px;
     top: 0;
+  }
+  .form__search__container {
+    margin-right: 30px;
+  }
+  .form {
+    display: flex;
+    justify-content: center;
+  }
+  .page-title__header {
+    font-size: 30px;
+    line-height: 1.233;
+    max-width: 353px;
+    padding-top: 40px;
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
@@ -99,8 +155,13 @@
     background-size: cover;
     min-height: 446px;
   }
-  .logo-svg {
+  .logo {
     width: 238px;
+  }
+  .page-title__header {
+    font-size: 50px;
+    line-height: 1.22;
+    max-width: 589px;
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
@@ -117,23 +178,4 @@
     background-size: cover;
     min-height: 446px;
   }
-}
-
-//searchBar
-.form__search,
-.form__dropdown {
-  width: 270px;
-  height: 40px;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #939393;
-  padding-left: 28px;
-}
-.form__search,
-.page-title__header {
-  margin-bottom: 25px;
 }

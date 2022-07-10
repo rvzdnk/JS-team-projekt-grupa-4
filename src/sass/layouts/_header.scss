@@ -51,12 +51,16 @@ option {
   max-width: 270px;
 }
 option,
-.form__search__container {
+.form__search__container,
+.form__dropdown {
   text-align: left;
   padding-left: 30px;
 }
 .form__dropdown {
-  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
 }
 .form__search__container,
 .page-title__header {

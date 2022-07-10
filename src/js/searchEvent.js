@@ -48,6 +48,8 @@ function renderEvents(data){
             )
             .join('');
         
-            events.insertAdjacentHTML('beforeend', eventDetail);
+            events.innerHTML = eventDetail;
 }
+
+
 searchEvents();

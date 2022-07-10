@@ -1,0 +1,25 @@
+.footer {
+  padding-bottom: 27px;
+
+  p {
+    width: 252px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.214;
+    color: #939393;
+    text-align: center;
+    margin: 0 auto;
+    span {
+      color: red;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-bottom: 18px;
+
+    p {
+      min-width: 521px;
+    }
+  }
+}

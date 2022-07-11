@@ -12,6 +12,7 @@ export function searchEvents (){
     fetchEvents(searchInput.value, selectDrop.value)
     .then(data =>{
         renderEvents(data)
+
     })
     .catch(error =>{
         console.log(error);
@@ -20,12 +21,13 @@ export function searchEvents (){
 
  export function renderEvents(data){
 
+    console.log(data);
+
     const eventDetail = 
-         data.map(
+         data._embedded.events.map(
                 ({
                 name, dates, images, _embedded,
-                }) => {
-                    return `
+                }) =>  `
                     <div class ="events__item">
                         <a>
                             <img class="event__img" src="${images[0].url}"/>
@@ -44,7 +46,7 @@ export function searchEvents (){
                         </div>
                     </div>
                     ` 
-                }
+                
             )
             .join('');
         

@@ -11,7 +11,7 @@ export async function fetchEvents (searchedValue, code) {
   try{
     const response = await axios({
       method: "get",
-      url: `https://app.ticketmaster.com/discovery/v2/events/?${API_KEY}&${params}`,
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${API_KEY}&${params}`,
       });
       return response.data;
     } 

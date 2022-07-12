@@ -1,3 +1,80 @@
+.events {
+  display: flex;
+  width: 280px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-right: 0;
+  padding-left: 0;
+  margin-bottom: -33px;
+  margin-right: -4px;
+  margin: 0 auto;
+  position: relative;
+  top: -39px;
+}
+
+.events__item {
+  flex-basis: calc(100% / 2 - 4px);
+  width: 138px;
+  max-height: 242px;
+  margin-bottom: 33px;
+  margin-right: 4px;
+  position: relative;
+  // decor
+  &:before {
+    content: '';
+    position: absolute;
+    width: 109px;
+    height: 101px;
+    right: 10px;
+    top: -10px;
+    border: 1px solid rgba(220, 86, 197, 0.3);
+    border-radius: 50px 0px;
+  }
+
+  img {
+    width: 128px;
+    height: 161px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50px 0px;
+    margin: 0 auto;
+  }
+  div {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.214;
+    text-align: center;
+    color: $secondary-color;
+  }
+  .events__info-venue {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #ffffff;
+
+    &:before {
+      content: '';
+      background-image: url('../images/vector.svg');
+      width: 7px;
+      height: 10px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+    }
+  }
+  .events__info-date {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.214;
+    color: #ffffff;
+  }
+}
+
 // background picture
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .wrapper {
@@ -25,6 +102,14 @@
     background-position: center;
     background-size: cover;
   }
+  .events {
+    width: 610px;
+  }
+  .events__item {
+    width: 180px;
+    max-height: 227px;
+    flex-basis: calc(100% / 3 - 14px);
+  }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
   screen and (min-resolution: 192dpi) and (min-width: 768px),
@@ -44,6 +129,14 @@
     background-position: center;
     background-size: cover;
   }
+  .events {
+    width: 946px;
+  }
+  .events__item {
+    width: 194px;
+    max-height: 312px;
+    flex-basis: calc(100% / 4 - 56px);
+  }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
   screen and (min-resolution: 192dpi) and (min-width: 1200px),
@@ -54,7 +147,4 @@
     background-position: center;
     background-size: cover;
   }
-}
-.events {
-  min-height: 2786px;
 }

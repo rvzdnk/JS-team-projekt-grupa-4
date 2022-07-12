@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-export async function fetchEvents () {
+export async function fetchEvents (searchedValue, code) {
   const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ'
   const params = new URLSearchParams({
-    keyword: 'concert',
-    countryCode: 'US',
+    keyword: searchedValue,
+    countryCode: code,
     size: 21,
   });
 

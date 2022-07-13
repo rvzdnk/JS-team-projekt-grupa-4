@@ -12,25 +12,33 @@ const events = document.querySelector(".events");
 let countryCode = 'US';
 
 function selectedCountry (){
-    let selectedValue = document.getElementsByTagName('select')[0].value
-    countryCode = selectedValue;
-    // console.log(countryCode);
+    let selectedValue = document.getElementsByTagName('select')[0].value;
+    return countryCode = selectedValue;
 }
 
 document.getElementsByTagName('select')[0].addEventListener('change', function(){
     selectedCountry();
+    console.log(countryCode);
 })
 
 // Search selector
 
-let searchedValue = 'concert';
-searchedValue = searchInput.value;
+// let searchedValue = 'concert';
+    fetchEvents('concert', "US")
+    .then(data =>{
+        console.log(data)
+        renderEvents(data)
+    })
+    .catch(error =>{
+        console.log(error);
+    });
 
+// let searchedValue = searchInput.value;
 
 // Function which search events by selectors
 
-export function searchEvents (){
-
+export function searchEvents(event){
+    event.preventDefault();
     fetchEvents(searchInput.value, countryCode)
     .then(data =>{
         console.log(data)
@@ -78,5 +86,4 @@ export function searchEvents (){
 
 
 
-searchInput.addEventListener('submit', 
-    searchEvents);
+searchForm.addEventListener('submit', searchEvents);

@@ -13,6 +13,8 @@ export function chooseCountries(e) {
         .join("");
 
         selectDrop.insertAdjacentHTML('beforeend',markup);
-      }
+       }
 
-selectDrop.addEventListener('click', chooseCountries);
+      chooseCountries();
+
+   

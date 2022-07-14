@@ -26,7 +26,6 @@ document
 
 // Search selector
 
-// let searchedValue = 'concert';
 fetchEvents('concert', 'US')
   .then(data => {
     console.log(data);
@@ -36,7 +35,6 @@ fetchEvents('concert', 'US')
     console.log(error);
   });
 
-// let searchedValue = searchInput.value;
 
 // Function which search events by selectors
 

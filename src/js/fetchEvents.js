@@ -6,6 +6,9 @@ export async function fetchEvents(searchedValue, code) {
     keyword: searchedValue,
     countryCode: code,
     size: 20,
+    totalElements,
+    totalPages,
+    number,
   });
 
   try {

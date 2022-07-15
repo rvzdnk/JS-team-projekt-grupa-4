@@ -1,12 +1,12 @@
 const axios = require('axios');
 
-export async function fetchEvents(searchedValue, code) {
+export async function fetchEvents(searchedValue, code, pageNr) {
   const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';
   const params = new URLSearchParams({
     keyword: searchedValue,
     countryCode: code,
     size: 20,
-
+    page: pageNr,
   });
 
   try {

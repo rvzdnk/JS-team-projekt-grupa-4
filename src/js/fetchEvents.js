@@ -7,9 +7,6 @@ export async function fetchEvents(searchedValue, code, pageNr) {
     countryCode: code,
     size: 20,
     page: pageNr,
-    // totalElements:,
-    // totalPages:,
-    // number:,
   });
 
   try {

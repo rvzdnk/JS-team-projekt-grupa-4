@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-
+import { pagination, pageNr } from './pagination';
 import { fetchEvents } from './fetchEvents';
 
 const searchForm = document.querySelector('.form');
@@ -26,10 +26,11 @@ document
 
 // Search selector
 
-fetchEvents('concert', 'US')
+fetchEvents('concert', 'US', pageNr)
   .then(data => {
-    console.log(data);
+    // console.log(data);
     renderEvents(data);
+    pagination(data);
   })
   .catch(error => {
     console.log(error);
@@ -41,10 +42,11 @@ fetchEvents('concert', 'US')
 export function searchEvents(event) {
   event.preventDefault();
 
-  fetchEvents(searchInput.value, countryCode)
+  fetchEvents(searchInput.value, countryCode, pageNr)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       renderEvents(data);
+      pagination(data);
     })
     .catch(error => {
       Notify.failure(
@@ -55,7 +57,7 @@ export function searchEvents(event) {
 
 export function renderEvents(data) {
   console.log(data);
-
+  console.log(data.page);
   const eventDetail = data._embedded.events
     .map(
       ({ name, dates, images, _embedded }) => `

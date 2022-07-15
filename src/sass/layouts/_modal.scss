@@ -2,6 +2,13 @@
     position: fixed;
     background-color: rgba($color: #000000, $alpha: 0.2);
     width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    opacity: 1;
+}
+
+.modal {
+    z-index: 2;
 }
 @media screen and(max-width: 767px) {
 .modal {
@@ -26,4 +33,8 @@
 
 }
 
+}
+
+.is-hidden {
+    visibility: hidden;
 }

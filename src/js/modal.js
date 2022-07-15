@@ -1,12 +1,17 @@
-events.addEventListener('click', renderModal);
+const container = document.querySelector(".container");
 const wrapper = document.querySelector(".wrapper");
+wrapper.addEventListener('click', renderModal);
+const backdrop = document.querySelector(".backdrop");
 
-export function renderModal(e) {
+function renderModal(e) {
+    backdrop.classList.remove('is-hidden')
+    if (e.target.classList.contains("events__item")) {
     const markup =
-    `<div class=backdrop">
+    `<div class="backdrop">
         <div class="modal">
             <div class="modal__header">
                 <img src=#>
+                <
             </div>
             <div class="modal__main">
                 <img class="event-img" src=#>
@@ -37,6 +42,14 @@ export function renderModal(e) {
         </div>
     </div>`;
     wrapper.insertAdjacentHTML("beforebegin", markup);
+    };
+   // closeModal()
+};
 
-}
 
+
+    document.addEventListener("keydown", event => {
+        if (event.code === 'escape') {
+            backdrop.classList.add('is-hidden')
+        } else return
+    });

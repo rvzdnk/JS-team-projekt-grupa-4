@@ -9,6 +9,9 @@ let pageNr = 0;
 let countryCode = "US";
 let arrayOfPages = [];
 let visibleArrayOfPages;
+let firstFive;
+let lastOne;
+
 const paginationArray = document.querySelector(".pagination");
 function pagination(data) {
   renderPagination(data);
@@ -19,10 +22,40 @@ function pagination(data) {
 function renderPagination(data) {
   arrayOfPages = [...Array(data.page.totalPages).keys()]
   // console.log(arrayOfPages);
-      visibleArrayOfPages = arrayOfPages.map((i) =>
-      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).join("");
-  paginationArray.innerHTML = visibleArrayOfPages;
+const currentPage = data.page.number;
+ const pageRange = currentPage +5;
+ const totalPages = data.page.totalPages;
+ 
+      // visibleArrayOfPages = arrayOfPages.map((i) =>
+      // `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`)
+      // .join("");
+if (currentPage === 0){
+      let firstFive = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage,pageRange).join("");
+     let lastOne = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
+        paginationArray.innerHTML = firstFive + "..." + lastOne;}
+else if (currentPage === 1){
+    let firstFive2 = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -1,pageRange-1).join("");
+    let lastOne = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
+        paginationArray.innerHTML = firstFive2 + "..." + lastOne;}
+else if (currentPage >= 2 && currentPage < totalPages -4){
+    let firstFive3 = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -2,pageRange-2).join("");
+    let lastOne = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
+        paginationArray.innerHTML = firstFive3 + "..." + lastOne;}
+else {
+  let lastFive = arrayOfPages.map((i) =>
+  `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-5).join("");
+  paginationArray.innerHTML = lastFive;}
 }
+
+
+
+
 
 function currentPage(data) {
   const currentPage = document.getElementById(data.page.number);
@@ -35,6 +68,7 @@ function changePage(data) {
     newPage.addEventListener("click", handleChangePage)
   };
 }
+
 
 function handleChangePage(event) {
   event.preventDefault();

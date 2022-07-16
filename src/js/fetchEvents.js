@@ -11,7 +11,6 @@ export async function fetchEvents(searchedValue, code, pageNr) {
     // totalPages:,
     // number:,
   });
-
   try {
     const response = await axios({
       method: 'get',
@@ -20,5 +19,6 @@ export async function fetchEvents(searchedValue, code, pageNr) {
     return response.data;
   } catch (error) {
     console.log(`Error: ${error}`);
-  }
+  };
+  
 }

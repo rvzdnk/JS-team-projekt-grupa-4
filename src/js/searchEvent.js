@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { pagination, pageNr } from './pagination';
+import { pagination, paginationAfterSearch, pageNr } from './pagination';
 import { fetchEvents } from './fetchEvents';
 
 const searchForm = document.querySelector('.form');
@@ -19,6 +19,7 @@ function selectedCountry() {
 document
   .getElementsByTagName('select')[0]
   .addEventListener('change', function () {
+    pageNr = 0;
     selectedCountry();
     searchEvents(event);
     console.log(countryCode);
@@ -41,12 +42,12 @@ fetchEvents('concert', 'US', pageNr)
 
 export function searchEvents(event) {
   event.preventDefault();
-
+  let pageNr = 0;
   fetchEvents(searchInput.value, countryCode, pageNr)
     .then(data => {
       // console.log(data);
       renderEvents(data);
-      pagination(data);
+      paginationAfterSearch(data);
     })
     .catch(error => {
       Notify.failure(

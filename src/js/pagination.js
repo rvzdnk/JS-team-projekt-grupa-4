@@ -5,7 +5,7 @@ const selectDrop = document.querySelector('#countries');
 
 const searchInput = document.querySelector('.form__search');
 
-let pageNr = 0;
+export let pageNr = 0;
 let countryCode = "US";
 let arrayOfPages = [];
 let visibleArrayOfPages;
@@ -118,4 +118,4 @@ function handleChangePageAfterSearch(event) {
 // totalPages = ${page.totalPages} - liczba wszystkich stron
 // number = &{page.number} - aktualna strona
 
-export { pagination, paginationAfterSearch, pageNr };
+export { pagination, paginationAfterSearch };

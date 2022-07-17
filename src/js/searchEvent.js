@@ -43,7 +43,6 @@ fetchEvents('concert', 'US', pageNr)
 
 export function searchEvents(event) {
   event.preventDefault();
-  let pageNr = 0;
   fetchEvents(searchInput.value, countryCode, pageNr)
     .then(data => {
       // console.log(data);

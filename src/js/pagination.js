@@ -22,7 +22,7 @@ function pagination(data) {
 function renderPagination(data) {
   arrayOfPages = [...Array(data.page.totalPages).keys()]
   // console.log(arrayOfPages);
-const currentPage = data.page.number;
+ const currentPage = data.page.number;
  const pageRange = currentPage +5;
  const totalPages = data.page.totalPages;
  

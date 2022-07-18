@@ -30,25 +30,25 @@ function renderModal(data) {
             <div class="modal__main">
                 <img class="event-img" src="${eventData.largeImg.url}">
                 <ul class="modal__about">
-                <li>
+                <li class="modal__text">
                     <span class="modal__about-span">INFO</span>
                 ${data.info}  
                 </li>
-                <li>
+                <li class="modal__text">
                     <span class="modal__about-span">WHEN</span>
                 ${data.dates.start.localDate},
-                ${data.dates.start.localTime}, ${data.timezone}
+                ${data.dates.start.localTime}, ${data.dates.timezone}
                 </li>
-                <li>
+                <li class="modal__text">
                     <span class="modal__about-span">WHERE</span>
-                ${data._embedded.venues[0].city}, ${data._embedded.venues[0].country},
+                ${data._embedded.venues[0].city.name}, ${data._embedded.venues[0].country.name},
                 ${data._embedded.venues[0].name}
                 </li>
-                <li>
+                <li class="modal__text">
                     <span class="modal__about-span">WHO</span>
                 ${data.name}
                 </li>
-                <li>
+                <li class="modal__text">
                     <span class="modal__about-span">PRICES</span>
                 
                 </li>
@@ -62,7 +62,7 @@ function renderModal(data) {
 
 document.addEventListener("keydown", event => {
         if (event.code === 'escape') {
-            backdrop.classList.add('is-hidden')
+            modalPlace.innerHTML=''
         } else return
 });
 async function fetchEventsById(id) {

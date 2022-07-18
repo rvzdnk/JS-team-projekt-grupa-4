@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-import { pagination, paginationAfterSearch, pageNr } from './pagination';
+import { pagination, paginationAfterSearch, page } from './pagination';
 import { fetchEvents } from './fetchEvents';
 import { renderModal } from './modal';
 
@@ -9,7 +9,7 @@ const searchForm = document.querySelector('.form');
 const searchInput = document.querySelector('.form__search');
 const selectDrop = document.querySelector('#countries');
 const events = document.querySelector('.events');
-
+let pageNr = 0;
 // Country selector
 let countryCode = 'US';
 

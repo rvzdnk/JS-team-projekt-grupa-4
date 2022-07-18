@@ -16,6 +16,5 @@ export async function fetchEvents(searchedValue, code, pageNr) {
     return response.data;
   } catch (error) {
     console.log(`Error: ${error}`);
-  };
-  
+  }
 }

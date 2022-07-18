@@ -5,10 +5,10 @@ const selectDrop = document.querySelector('#countries');
 
 const searchInput = document.querySelector('.form__search');
 
-let pageNr = 0;
 let countryCode = 'US';
 let arrayOfPages = [];
 let visibleArrayOfPages;
+let page = 0;
 
 const paginationArray = document.querySelector('.pagination');
 function pagination(data) {
@@ -195,8 +195,8 @@ function changePage(data) {
 
 function handleChangePage(event) {
   event.preventDefault();
-  pageNr = event.target.value;
-  fetchEvents('concert', 'US', pageNr)
+  page = event.target.value;
+  fetchEvents('concert', 'US', page)
     .then(data => {
       renderEvents(data);
       pagination(data);
@@ -205,7 +205,6 @@ function handleChangePage(event) {
       console.log(error);
     });
 }
-
 // Pagination After Search
 function paginationAfterSearch(data) {
   renderPagination(data);
@@ -225,15 +224,13 @@ function changePageAfterSearch(data) {
     }
   }
 }
-
 function handleChangePageAfterSearch(event) {
   event.preventDefault();
-  pageNr = event.target.value;
-  console.log(pageNr);
+  page = event.target.value;
   if (selectDrop.value === 'Choose country') {
     selectDrop.value = 'US';
   }
-  fetchEvents(searchInput.value, selectDrop.value, pageNr)
+  fetchEvents(searchInput.value, selectDrop.value, page)
     .then(data => {
       renderEvents(data);
       paginationAfterSearch(data);
@@ -247,4 +244,4 @@ function handleChangePageAfterSearch(event) {
 // totalPages = ${page.totalPages} - liczba wszystkich stron
 // number = &{page.number} - aktualna strona
 
-export { pagination, paginationAfterSearch, pageNr };
+export { pagination, paginationAfterSearch, page };

@@ -1,13 +1,15 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { pagination, paginationAfterSearch} from './pagination';
-import { pageNr} from './pagination';
+import { pagination, paginationAfterSearch } from './pagination';
+// import { pageNr } from './pagination';
 import { fetchEvents } from './fetchEvents';
+import { renderModal } from './modal';
 
 const searchForm = document.querySelector('.form');
 const searchInput = document.querySelector('.form__search');
 const selectDrop = document.querySelector('#countries');
 const events = document.querySelector('.events');
+let pageNr = 0;
 
 // Country selector
 let countryCode = 'US';
@@ -38,7 +40,6 @@ fetchEvents('concert', 'US', pageNr)
     console.log(error);
   });
 
-
 // Function which search events by selectors
 
 export function searchEvents(event) {
@@ -59,12 +60,13 @@ export function searchEvents(event) {
 export function renderEvents(data) {
   console.log(data);
   console.log(data.page);
+
   const eventDetail = data._embedded.events
     .map(
       ({ name, dates, images, _embedded }) => `
                     <div class ="events__item">
                         <a>
-                            <img class="event__img" src="${images[0].url}"/>
+                            <img class="event__img" src="${images[2].url}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">
@@ -87,3 +89,4 @@ export function renderEvents(data) {
 }
 
 searchForm.addEventListener('submit', searchEvents);
+events.addEventListener('click', renderModal);

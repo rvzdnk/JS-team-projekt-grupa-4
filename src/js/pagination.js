@@ -32,7 +32,7 @@ function renderPagination(data) {
   //       .join("");
   // paginationArray.innerHTML = visibleArrayOfPages;
   if (currentPage === 0) {
-    firstFive = arrayOfPages
+    let firstFive = arrayOfPages
       .map(
         i =>
           `<button type="submit" value=${i} id=${i} class=pagination__btn>${

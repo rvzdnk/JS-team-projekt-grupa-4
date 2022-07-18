@@ -1,8 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-import { pagination, paginationAfterSearch } from './pagination';
-
+import { pagination, paginationAfterSearch, pageNr } from './pagination';
 import { fetchEvents } from './fetchEvents';
 import { renderModal } from './modal';
 
@@ -10,7 +9,6 @@ const searchForm = document.querySelector('.form');
 const searchInput = document.querySelector('.form__search');
 const selectDrop = document.querySelector('#countries');
 const events = document.querySelector('.events');
-let pageNr = 0;
 
 // Country selector
 let countryCode = 'US';
@@ -67,7 +65,7 @@ export function renderEvents(data) {
       ({ name, dates, images, _embedded }) => `
                     <div class ="events__item">
                         <a>
-                            <img class="event__img" src="${images[2].url}"/>
+                            <img class="event__img" src="${images[4].url}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">

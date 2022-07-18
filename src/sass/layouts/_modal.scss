@@ -1,15 +1,19 @@
 .backdrop {
-    position: fixed;
-    background-color: rgba($color: #000000, $alpha: 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    position: fixed;
+    opacity: 1;
+    transition: opacity;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
 }
-
 .modal {
-    color: #000000;
-    z-index: 2;
+    background-color: #000000;
+    color:aliceblue;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -19,13 +23,8 @@
     height: 100%;
     opacity: 0;
     border-radius: 150px 0px;
-    &__about {
-        &-span {
-            color:#000000
-        }
-    }
-    z-index: 2;
 }
+
 @media screen and(max-width: 767px) {
 .modal {
     width: 85vw;
@@ -53,5 +52,5 @@
 
 .is-hidden {
     visibility: hidden;
-}
+};
 

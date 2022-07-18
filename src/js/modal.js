@@ -15,15 +15,20 @@ function getEventId(e) {
 document.addEventListener('click', getEventId);
 
 function renderModal(data) {
+    const eventData = {
+        ...data,
+        smallImg: data.images.find(img => img.width === 305 && img.height === 225),
+        largeImg: data.images.find(img => img.width === 1024 && img.height === 683),
+    }
     console.log(data)
-    const markup =
+    modalPlace.innerHTML =
     `<div class="backdrop">
         <div class="modal">
             <div class="modal__header">
-                <img src="${data.images.find(img => img.width === 305 && img.height === 225)}" alt="event's icon">
+                <img src="${eventData.smallImg.url}" alt="event's icon">
             </div>
             <div class="modal__main">
-                <img class="event-img" src="${data.images.find(img => img.width === 1024 && img.height === 683)}">
+                <img class="event-img" src="${eventData.largeImg.url}">
                 <ul class="modal__about">
                 <li>
                     <span class="modal__about-span">INFO</span>
@@ -45,17 +50,14 @@ function renderModal(data) {
                 </li>
                 <li>
                     <span class="modal__about-span">PRICES</span>
-                    
+                
                 </li>
                 </ul>
             </div>
             <button class="modal__more"> More from this author </button>
         </div>
-    </div>`;
-    console.log(markup)
-    modalPlace.innerHTML= markup;
-    };
-
+    </div>`
+    }
 
 
 document.addEventListener("keydown", event => {

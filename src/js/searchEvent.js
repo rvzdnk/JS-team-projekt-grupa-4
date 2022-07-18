@@ -61,7 +61,7 @@ export function renderEvents(data) {
   const eventDetail = data._embedded.events
     .map(
       ({ id, name, dates, images, _embedded }) => `
-                    <div class ="events__item" data-index=${id}>
+                    <li class ="events__item" data-index=${id}>
                         <a href=#>
                             <img class="event__img" src="${images[0].url}"/>
                         </a>
@@ -77,7 +77,7 @@ export function renderEvents(data) {
                             </p>
                             
                         </div>
-                    </div>
+                    </li>
                     `
     )
     .join('');

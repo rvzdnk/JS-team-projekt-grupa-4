@@ -19,41 +19,75 @@ function pagination(data) {
 };
 
 function renderPagination(data) {
-  arrayOfPages = [...Array(data.page.totalPages).keys()]
-  // console.log(arrayOfPages);
+
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+   totalPages = 50;
+  };
+  arrayOfPages = [...Array(totalPages).keys()]
+
  const currentPage = data.page.number;
  const pageRange = currentPage +5;
- const totalPages = data.page.totalPages;
- 
-      // visibleArrayOfPages = arrayOfPages.map((i) =>
-      // `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`)
-      // .join("");
-if (currentPage === 0){
-      let firstFive = arrayOfPages.map((i) =>
+
+
+  //     visibleArrayOfPages = arrayOfPages.map((i) =>
+  //     `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`)
+  //       .join("");  
+  // paginationArray.innerHTML = visibleArrayOfPages;
+  if (currentPage === 0) {
+      firstFive = arrayOfPages.map((i) =>
       `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage,pageRange).join("");
      let lastOne = arrayOfPages.map((i) =>
-      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
-        paginationArray.innerHTML = firstFive + "..." + lastOne;}
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i+1}</button>`).slice(-1).join("");
+    paginationArray.innerHTML = firstFive + "..." + lastOne;
+    if (currentPage === 0 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive;
+    }
+  }
 else if (currentPage === 1){
     let firstFive2 = arrayOfPages.map((i) =>
       `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -1,pageRange-1).join("");
     let lastOne = arrayOfPages.map((i) =>
       `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
-        paginationArray.innerHTML = firstFive2 + "..." + lastOne;}
-else if (currentPage >= 2 && currentPage < totalPages -4){
+    paginationArray.innerHTML = firstFive2 + "..." + lastOne;
+      if (currentPage === 1 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
+    }
+  }
+    else if (currentPage === 2){
+    let firstFive2 = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -2,pageRange-2).join("");
+    let lastOne = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
+    paginationArray.innerHTML = firstFive2 + "..." + lastOne;
+      if (currentPage === 2 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
+    }
+  }
+    else if (currentPage === 3){
+    let firstFive2 = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -3,pageRange-3).join("");
+    let lastOne = arrayOfPages.map((i) =>
+      `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
+    paginationArray.innerHTML = firstFive2 + "..." + lastOne;
+      if (currentPage === 3 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
+    }}
+else if (currentPage >= 4 && currentPage < totalPages -4){
     let firstFive3 = arrayOfPages.map((i) =>
       `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(currentPage -2,pageRange-2).join("");
     let lastOne = arrayOfPages.map((i) =>
       `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-1).join("");
-        paginationArray.innerHTML = firstFive3 + "..." + lastOne;}
+      let firstOne = arrayOfPages.map((i) =>
+    `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(0,1).join("");
+        paginationArray.innerHTML = firstOne + "..." + firstFive3 + "..." + lastOne;}
 else {
   let lastFive = arrayOfPages.map((i) =>
-  `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-5).join("");
-  paginationArray.innerHTML = lastFive;}
+    `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(-5).join("");
+  let firstOne = arrayOfPages.map((i) =>
+    `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`).slice(0,1).join("");
+  paginationArray.innerHTML = firstOne + "..." + lastFive;}
 }
-
-
-
 
 
 function currentPage(data) {
@@ -62,9 +96,15 @@ function currentPage(data) {
 }
 
 function changePage(data) {
-  for (let i = 0; i < data.page.totalPages; i++) {
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+   totalPages = 50;
+  };
+  for (let i = 0; i < totalPages; i++) {
     let newPage = document.getElementById(i);
-    newPage.addEventListener("click", handleChangePage)
+    if (newPage !== null) {
+      newPage.addEventListener("click", handleChangePage)
+    }
   };
 }
 
@@ -72,7 +112,6 @@ function changePage(data) {
 function handleChangePage(event) {
   event.preventDefault();
   pageNr = event.target.value;
-  console.log(pageNr);
   fetchEvents('concert', 'US', pageNr)
   .then(data => {
     renderEvents(data);
@@ -91,9 +130,15 @@ function paginationAfterSearch(data) {
 };
 
 function changePageAfterSearch(data) {
-  for (let i = 0; i < data.page.totalPages; i++) {
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+   totalPages = 50;
+  };
+    for (let i = 0; i < totalPages; i++) {
     let newPage = document.getElementById(i);
-    newPage.addEventListener("click", handleChangePageAfterSearch)
+    if (newPage !== null) {
+      newPage.addEventListener("click", handleChangePageAfterSearch)
+    }
   };
 }
 

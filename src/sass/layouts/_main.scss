@@ -11,7 +11,8 @@
   margin: 0 auto;
   position: relative;
   top: -39px;
-}
+  list-style: none;
+};
 
 .events__item {
   flex-basis: calc(100% / 2 - 4px);

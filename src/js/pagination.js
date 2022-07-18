@@ -9,8 +9,7 @@ let pageNr = 0;
 let countryCode = "US";
 let arrayOfPages = [];
 let visibleArrayOfPages;
-let firstFive;
-let lastOne;
+
 
 const paginationArray = document.querySelector(".pagination");
 function pagination(data) {
@@ -20,11 +19,13 @@ function pagination(data) {
 };
 
 function renderPagination(data) {
+
   let totalPages = data.page.totalPages;
   if (totalPages > 50) {
    totalPages = 50;
   };
   arrayOfPages = [...Array(totalPages).keys()]
+
  const currentPage = data.page.number;
  const pageRange = currentPage +5;
 

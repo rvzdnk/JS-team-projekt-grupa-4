@@ -21,7 +21,7 @@ function selectedCountry() {
 document
   .getElementsByTagName('select')[0]
   .addEventListener('change', function () {
-    pageNr = 0;
+    //pageNr = 0;
     selectedCountry();
     searchEvents(event);
     console.log(countryCode);
@@ -65,7 +65,7 @@ export function renderEvents(data) {
       ({ name, dates, images, _embedded }) => `
                     <div class ="events__item">
                         <a>
-                            <img class="event__img" src="${images[4].url}"/>
+                            <img class="event__img" src="${images[6].url}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">

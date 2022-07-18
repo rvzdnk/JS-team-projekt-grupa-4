@@ -1,15 +1,21 @@
+import axios from "axios";
 const wrapper = document.querySelector(".wrapper");
 const backdrop = document.querySelector(".backdrop");
-
-const modalHandler = (e) => {
+function getEventId(e) {
     if (!e.target.closest('li'))
-    return;
+        return;
     else {
-    const id = e.target.dataset.index;
-    fetchEventsById(id)
-}};
+        const id = e.target.dataset.index;
+        fetchEventsById(id)
+        .then(data=>renderModal(data),
+        err=> console.log(err))
+    }
+    
+}
+wrapper.addEventListener('click', getEventId);
 
 function renderModal(data) {
+    try {
     const event = {
         ...data,
         authorName: data.name.split(' ').slice(0, 2).join(' '),
@@ -24,7 +30,7 @@ function renderModal(data) {
         largeImgSrc: data.images.find(img => img.width === 1024 && img.height === 683),
         ticketVIPprice: data.priceRanges[1]? 1 : 0,
         urlPrice: data.url,
-    }
+    };
     const markup =
     `<div class="backdrop">
         <div class="modal">
@@ -32,7 +38,7 @@ function renderModal(data) {
                 <img src="${event.smallImgSrc}" alt="event's icon">
             </div>
             <div class="modal__main">
-                <img class="event-img" src="${img.largeImgSrc}">
+                <img class="event-img" src="${event.largeImgSrc}">
                 <ul class="modal__about">
                 <li>
                     <span class="modal__about-span">INFO</span>
@@ -61,7 +67,11 @@ function renderModal(data) {
             <button class="modal__more"> More from this author </button>
         </div>
     </div>`;
-    wrapper.insertAdjacentHTML("beforebegin", markup);
+    console.log(markup)
+    wrapper.insertAdjacentElement('beforebegin', markup)}
+    catch {
+        err=> console.log(err)
+    }
     };
 
 
@@ -71,15 +81,16 @@ document.addEventListener("keydown", event => {
             backdrop.classList.add('is-hidden')
         } else return
 });
-async function fetchEventsById(id) {   
-    try {
-        const API_KEY= `fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ`;
-        const result = fetch(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${API_KEY}`)
-        const data = result.data;
-        renderModal(data);
-    } catch (error) {
-        console.log(`error: ${error}`)
-    }
-}
-
-wrapper.addEventListener('click', modalHandler);
+async function fetchEventsById(id) {
+        const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';
+      
+        try {
+          const response = await axios({
+            method: 'get',
+            url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
+          });
+          return response.data;
+        } catch (error) {
+          console.log(`Error: ${error}`);
+        }
+      }

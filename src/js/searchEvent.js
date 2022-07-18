@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { pagination, paginationAfterSearch, pageNr } from './pagination';
-// import {  } from './pagination';
 import { fetchEvents } from './fetchEvents';
 import { renderModal } from './modal';
 

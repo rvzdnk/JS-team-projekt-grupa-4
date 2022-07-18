@@ -1,140 +1,247 @@
-class Pagination {
-    constructor({
-      currentPage = 1,
-      pageNumber,
-      paginationContainer,
-      cardContainer,
-      country,
-      authorId,
-      keyword,
-      loadContainer,
-    }) {
-  
-      this.currentPage = currentPage;
-      this.pageNumber = this.setPageNumber(pageNumber);
-      this.paginationContainer = paginationContainer;
-      this.cardContainer = cardContainer;
-      this.country = country;
-      this.authorId = authorId;
-      this.keyword = keyword;
-      this.elementsToShow = 5;
-      this.temporary;
-      this.setTemporary();
-      this.loadContainer = loadContainer;
+import { searchEvents } from './fetchEvents';
+import { fetchEvents } from './fetchEvents';
+import { renderEvents } from './searchEvent';
+const selectDrop = document.querySelector('#countries');
+
+const searchInput = document.querySelector('.form__search');
+
+let countryCode = 'US';
+let arrayOfPages = [];
+let visibleArrayOfPages;
+let page = 0;
+
+const paginationArray = document.querySelector('.pagination');
+function pagination(data) {
+  renderPagination(data);
+  currentPage(data);
+  changePage(data);
+}
+
+function renderPagination(data) {
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+    totalPages = 50;
+  }
+  arrayOfPages = [...Array(totalPages).keys()];
+
+  const currentPage = data.page.number;
+  const pageRange = currentPage + 5;
+
+  //     visibleArrayOfPages = arrayOfPages.map((i) =>
+  //     `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`)
+  //       .join("");
+  // paginationArray.innerHTML = visibleArrayOfPages;
+  if (currentPage === 0) {
+    let firstFive = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(currentPage, pageRange)
+      .join('');
+    let lastOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-1)
+      .join('');
+    paginationArray.innerHTML = firstFive + '...' + lastOne;
+    if (currentPage === 0 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive;
     }
-  
-    setPageNumber(pageNumber) {
-      if (pageNumber >= 30) {
-        return 29;
-      }
-      return pageNumber - 1;
+  } else if (currentPage === 1) {
+    let firstFive2 = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(currentPage - 1, pageRange - 1)
+      .join('');
+    let lastOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-1)
+      .join('');
+    paginationArray.innerHTML = firstFive2 + '...' + lastOne;
+    if (currentPage === 1 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
     }
-  
-    setTemporary = async () => {
-      
-      if (this.pageNumber <= this.elementsToShow) {
-        this.elementsToShow=this.pageNumber
-        if (this.currentPage == 1) {
-          this.temporary = this.range(this.currentPage, this.elementsToShow);
-        } else if (this.currentPage == 2) {
-          this.temporary = this.range(this.currentPage - 1, this.elementsToShow);
-        } else if (this.currentPage ==3) {
-          this.temporary = this.range(this.currentPage - 2, this.elementsToShow);
-        } else if (this.currentPage == 4 ) {
-          this.temporary = this.range(this.currentPage - 3, this.elementsToShow);
-        } else if (this.currentPage == this.pageNumber) {
-          this.temporary = this.range(this.currentPage - 4, this.currentPage);
-        }
-  
-      }
-      else if (this.currentPage == 1) {
-        this.temporary = this.range(this.currentPage, this.elementsToShow);
-      } else if (this.currentPage == 2) {
-        this.temporary = this.range(this.currentPage - 1, this.elementsToShow);
-      } else if (this.currentPage > 2 && this.currentPage < this.pageNumber - 1) {
-        this.temporary = this.range(this.currentPage - 2, this.currentPage + 2);
-      } else if (this.currentPage == this.pageNumber - 1) {
-        this.temporary = this.range(this.currentPage - 3, this.currentPage + 1);
-      } else if (this.currentPage == this.pageNumber) {
-        this.temporary = this.range(this.currentPage - 4, this.currentPage);
-      }
-    };
-  
-  
-  
-    range(start, end) {
-      let length = end - start + 1;
-      return Array.from({ length }, (_, idx) => idx + start);
+  } else if (currentPage === 2) {
+    let firstFive2 = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(currentPage - 2, pageRange - 2)
+      .join('');
+    let lastOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-1)
+      .join('');
+    paginationArray.innerHTML = firstFive2 + '...' + lastOne;
+    if (currentPage === 2 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
     }
-  
-    renderPagination = () => {
-      try {
-    
-      if (this.currentPage <= this.pageNumber - 3) {
-        this.temporary.push('...');
-        this.temporary.push(this.pageNumber);
-        }
-      if (this.pageNumber == this.elementsToShow) {
-        this.temporary.pop(this.pageNumber);
-        this.temporary.pop('...');
-      }
-  
-        this.paginationContainer.innerHTML = '';
-        this.temporary.map((num, index) => {
-        this.paginationContainer.insertAdjacentHTML('beforeend', this.paginationTemplate(num));
-      });
-  
-      const dots = document.querySelector('.pagination__dots');
-      
-      dots.disabled=true;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  
-    
-    paginationTemplate = (num) =>
-        num != '...'
-          ? `
-        <li class='pagination__link${num == this.currentPage ? '--active' : ''}'>
-          <button>${num}</button>
-        </li>
-      `
-          : `<span class='pagination__link--dots'><button class='pagination__dots'>
-      ${num}</button>
-      </span>`;
-  
-  
-    handlePaginationOnClick = async e => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-      e.preventDefault();
-      this.cardContainer.innerHTML = '';
-      document
-        .querySelectorAll('.pagination__link')
-        .forEach(pagination => pagination.classList.remove('pagination__link--active'));
-  
-      e.target.closest('li')?.classList.add('pagination__link--active');
-        this.currentPage = e.target.textContent;
-  
-      e.preventDefault()
-  
-    };
-  
-    paginationClear() {
-      this.currentPage = 1;
-      this.pageNumber = 1;
-      this.paginationContainer = '';
-      this.cardContainer = '';
-      this.country = '';
-      this.authorId = '';
-      this.keyword = '';
-      this.temporary = '';
+  } else if (currentPage === 3) {
+    let firstFive2 = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(currentPage - 3, pageRange - 3)
+      .join('');
+    let lastOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-1)
+      .join('');
+    paginationArray.innerHTML = firstFive2 + '...' + lastOne;
+    if (currentPage === 3 && totalPages < 5) {
+      paginationArray.innerHTML = firstFive2;
+    }
+  } else if (currentPage >= 4 && currentPage < totalPages - 4) {
+    let firstFive3 = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(currentPage - 2, pageRange - 2)
+      .join('');
+    let lastOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-1)
+      .join('');
+    let firstOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(0, 1)
+      .join('');
+    paginationArray.innerHTML = firstOne + '...' + firstFive3 + '...' + lastOne;
+  } else {
+    let lastFive = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(-5)
+      .join('');
+    let firstOne = arrayOfPages
+      .map(
+        i =>
+          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+            i + 1
+          }</button>`
+      )
+      .slice(0, 1)
+      .join('');
+    paginationArray.innerHTML = firstOne + '...' + lastFive;
+  }
+}
+
+function currentPage(data) {
+  const currentPage = document.getElementById(data.page.number);
+  currentPage.classList.add('pagination__btn--active');
+}
+
+function changePage(data) {
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+    totalPages = 50;
+  }
+  for (let i = 0; i < totalPages; i++) {
+    let newPage = document.getElementById(i);
+    if (newPage !== null) {
+      newPage.addEventListener('click', handleChangePage);
     }
   }
-  
-  
-  
-  export { Pagination };
+}
+
+function handleChangePage(event) {
+  event.preventDefault();
+  page = event.target.value;
+  fetchEvents('concert', 'US', page)
+    .then(data => {
+      renderEvents(data);
+      pagination(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+// Pagination After Search
+function paginationAfterSearch(data) {
+  renderPagination(data);
+  currentPage(data);
+  changePageAfterSearch(data);
+}
+
+function changePageAfterSearch(data) {
+  let totalPages = data.page.totalPages;
+  if (totalPages > 50) {
+    totalPages = 50;
+  }
+  for (let i = 0; i < totalPages; i++) {
+    let newPage = document.getElementById(i);
+    if (newPage !== null) {
+      newPage.addEventListener('click', handleChangePageAfterSearch);
+    }
+  }
+}
+function handleChangePageAfterSearch(event) {
+  event.preventDefault();
+  page = event.target.value;
+  if (selectDrop.value === 'Choose country') {
+    selectDrop.value = 'US';
+  }
+  fetchEvents(searchInput.value, selectDrop.value, page)
+    .then(data => {
+      renderEvents(data);
+      paginationAfterSearch(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+// totalElements = ${page.totalElements} - liczba wszystkich elementów
+// size = ${page.size} - liczba elementów na stronie
+// totalPages = ${page.totalPages} - liczba wszystkich stron
+// number = &{page.number} - aktualna strona
+
+export { pagination, paginationAfterSearch, page };

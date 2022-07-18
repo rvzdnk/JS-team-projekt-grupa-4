@@ -2,7 +2,6 @@
   display: flex;
   width: 280px;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   padding-top: 10px;
   padding-right: 0;
@@ -18,7 +17,6 @@
 .events__item {
   flex-basis: calc(100% / 2 - 4px);
   width: 138px;
-  max-height: 242px;
   margin-bottom: 33px;
   margin-right: 4px;
   position: relative;
@@ -160,8 +158,23 @@
   margin: 0 auto;
   list-style-type: none;
   margin-bottom: 60px;
+  gap: 4px;
 }
 
+.pagination__btn {
+  background: inherit;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+  border: 0;
+}
+.pagination__btn:hover {
+  cursor: pointer;
+}
 .pagination__link button {
   width: 30px;
   height: 30px;
@@ -183,7 +196,7 @@
   }
 }
 
-.pagination__link--active button {
+.pagination__btn--active {
   width: 30px;
   height: 30px;
   font-family: Montserrat;
@@ -196,7 +209,7 @@
   box-sizing: border-box;
   background-color: inherit;
   color: #dc56c5;
-  border: 1px solid #DC56C5;
+  border: 1px solid #dc56c5;
   border-radius: 10px 0px;
   cursor: pointer;
 

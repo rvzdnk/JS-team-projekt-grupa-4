@@ -1,3 +1,4 @@
+
 import axios from "axios";
 const modalPlace = document.querySelector(".place-for-modal");
 const backdrop = document.querySelector(".backdrop");
@@ -79,3 +80,11 @@ async function fetchEventsById(id) {
           console.log(`Error: ${error}`);
         }
       }
+
+        <button class="modal__more"> More from this author </button>
+    <div>
+    </div>`;
+}
+
+export { renderModal };
+

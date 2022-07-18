@@ -1,13 +1,15 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
+import { pagination, paginationAfterSearch, page } from './pagination';
 import { fetchEvents } from './fetchEvents';
+import { renderModal } from './modal';
 
 const searchForm = document.querySelector('.form');
 const searchInput = document.querySelector('.form__search');
 const selectDrop = document.querySelector('#countries');
 const events = document.querySelector('.events');
-
+let pageNr = 0;
 // Country selector
 let countryCode = 'US';
 
@@ -19,6 +21,7 @@ function selectedCountry() {
 document
   .getElementsByTagName('select')[0]
   .addEventListener('change', function () {
+    pageNr = 0;
     selectedCountry();
     searchEvents(event);
     console.log(countryCode);
@@ -26,27 +29,25 @@ document
 
 // Search selector
 
-// let searchedValue = 'concert';
-fetchEvents('concert', 'US')
+fetchEvents('concert', 'US', pageNr)
   .then(data => {
-    console.log(data);
+    // console.log(data);
     renderEvents(data);
+    pagination(data);
   })
   .catch(error => {
     console.log(error);
   });
 
-// let searchedValue = searchInput.value;
-
 // Function which search events by selectors
 
 export function searchEvents(event) {
   event.preventDefault();
-
-  fetchEvents(searchInput.value, countryCode)
+  fetchEvents(searchInput.value, countryCode, pageNr)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       renderEvents(data);
+      paginationAfterSearch(data);
     })
     .catch(error => {
       Notify.failure(
@@ -57,9 +58,11 @@ export function searchEvents(event) {
 
 export function renderEvents(data) {
   console.log(data);
+  console.log(data.page);
 
   const eventDetail = data._embedded.events
     .map(
+
       ({ id, name, dates, images, _embedded }) => `
                     <li class ="events__item" data-index=${id}>
                         <a href=#>
@@ -86,3 +89,4 @@ export function renderEvents(data) {
 }
 
 searchForm.addEventListener('submit', searchEvents);
+events.addEventListener('click', renderModal);

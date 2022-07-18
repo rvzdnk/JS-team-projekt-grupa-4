@@ -1,9 +1,6 @@
-events.addEventListener('click', renderModal);
-
 function renderModal(e) {
-    events.classList.add(hide);
-    const markup =
-    `<div class="modal">
+  e.currentTarget.classList.add('hide');
+  const markup = `<div class="modal">
         <div class="modal__header">
             <img src="${e.target.src}">
         </div>
@@ -11,7 +8,7 @@ function renderModal(e) {
             <img class="event-img">
             <div class="modal__about">
                 <span class="modal__about-span">INFO</span>
-                ${e.targer}
+                ${e.target}
                 <span class="modal__about-span">WHEN</span>
                 ${e.target}
                 <span class="modal__about-span">WHERE</span>
@@ -24,6 +21,7 @@ function renderModal(e) {
         </div>
         <button class="modal__more"> More from this author </button>
     <div>
-    </div>`
+    </div>`;
 }
 
+export { renderModal };

@@ -89,7 +89,8 @@ const closeModal = () => {
     if (modalPlace) {
         const modalClose = document.querySelector(".modal__close");
         modalClose.addEventListener("click", clearModal)
+        
 } return}
-
+backdrop.addEventListener("click", clearModal)
 const clearModal = () => modalPlace.innerHTML=``;
 export { renderModal };

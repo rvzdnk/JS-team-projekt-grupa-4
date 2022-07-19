@@ -84,10 +84,6 @@ export function renderEvents(data) {
                     `
     )
     .join('');
-
-    console.log(eventDetail);
-
-
   events.innerHTML = eventDetail;
 }
 

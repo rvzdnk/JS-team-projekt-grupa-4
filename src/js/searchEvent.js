@@ -61,7 +61,6 @@ export function renderEvents(data) {
   console.log(data.page);
 
   const eventDetail = data._embedded.events
-  .sort((a, b) =>(a.name.localeCompare(b.name)))
   .map(
       ({ id, name, dates, images, _embedded }) => `
                     <li class ="events__item" data-index=${id}>

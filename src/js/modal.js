@@ -2,7 +2,6 @@ import axios from "axios";
 const modalPlace = document.querySelector(".place-for-modal");
 const backdrop = document.querySelector(".backdrop");
 const eventsList = document.querySelector(".events");
-const modalClose = document.querySelector(".modal__close");
 function getEventId(e) {
     if (!e.target.closest('li'))
         return
@@ -51,9 +50,9 @@ function renderModal(data) {
                 <li class="modal__text">
                     <span class="modal__about-span">PRICES</span>
                     <p class="modal__about-price"> Standard: ${data.priceRanges[0].min} ${data.priceRanges[0].currency}</p>
-                    <button class="modal__about-btn" type="button"> BUY TICKETS </button>
+                    <button class="modal__about-btn" type="button" onclick="window.location.href='${data.url}';"> BUY TICKETS </button>
                     <p class="modal__about-price"> VIP: ${data.priceRanges[0].max} ${data.priceRanges[0].currency}</p>
-                    <button class="modal__about-btn" type="button"> BUY TICKETS </button>
+                    <button class="modal__about-btn" type="button" onclick="window.location.href='${data.url}';"> BUY TICKETS </button>
                 </li>
                 </ul>
             </div>
@@ -86,10 +85,12 @@ document.addEventListener("keydown", (e) => {
         modalPlace.innerHTML=''
     } return});
 
-const closeModal = (e) => {
-    if (modalPlace.innerHTML.length > 100) {
-    modalClose.addEventListener("click", () => modalPlace.innerHTML='')
+const closeModal = () => {
+    if (modalPlace) {
+        const modalClose = document.querySelector(".modal__close");
+        modalClose.addEventListener("click", clearModal)
+        
 } return}
-
-
+backdrop.addEventListener("click", clearModal)
+const clearModal = () => modalPlace.innerHTML=``;
 export { renderModal };

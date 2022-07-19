@@ -212,10 +212,29 @@
   border: 1px solid #dc56c5;
   border-radius: 10px 0px;
   cursor: pointer;
-
+  animation-name: pagination;
+  animation-duration: 1000ms;
   @media screen and(min-width: 768px) {
     font-size: 16px;
   }
+}
+
+@keyframes pagination {
+  0% {
+    font-size: 14px;
+    background-color: inherit;
+    color: #dc56c5;
+    }
+    50% {
+      font-size: 18px;
+    background-color: #dc56c5;
+    color: inherit;
+    }
+    100% {
+      font-size: 14px;
+      color: #dc56c5;
+    background-color: inherit;
+    }
 }
 
 .pagination__link--dots {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { searchEvents } from "./searchEvent"
 const modalPlace = document.querySelector(".place-for-modal");
 const backdrop = document.querySelector(".backdrop");
 const eventsList = document.querySelector(".events");
@@ -90,7 +91,11 @@ const closeModal = () => {
         const modalClose = document.querySelector(".modal__close");
         modalClose.addEventListener("click", clearModal)
         
-} return}
-backdrop.addEventListener("click", clearModal)
+} return};
+
 const clearModal = () => modalPlace.innerHTML=``;
 export { renderModal };
+
+const modalMoreFn = (e) => {
+    searchEvents()
+}

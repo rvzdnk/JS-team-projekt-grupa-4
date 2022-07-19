@@ -61,12 +61,12 @@ export function renderEvents(data) {
   console.log(data.page);
 
   const eventDetail = data._embedded.events
-    .map(
-
+  .sort((a, b) =>(a.name.localeCompare(b.name)))
+  .map(
       ({ id, name, dates, images, _embedded }) => `
                     <li class ="events__item" data-index=${id}>
                         <a href=#>
-                            <img class="event__img" src="${images[0].url}"/>
+                            <img class="event__img" src="${images.filter(e => e.ratio === '4_3').map(e => `${e.url}`)}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">
@@ -84,6 +84,9 @@ export function renderEvents(data) {
                     `
     )
     .join('');
+
+    console.log(eventDetail);
+
 
   events.innerHTML = eventDetail;
 }

@@ -92,3 +92,4 @@ const closeModal = (e) => {
 } return}
 
 
+export { renderModal };

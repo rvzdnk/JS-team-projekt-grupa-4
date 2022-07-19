@@ -1,6 +1,7 @@
 import axios from "axios";
 import { searchEvents } from "./searchEvent"
 const modalPlace = document.querySelector(".place-for-modal");
+const searchInput = document.querySelector('.form__search');
 
 const eventsList = document.querySelector(".events");
 function getEventId(e) {
@@ -8,7 +9,9 @@ function getEventId(e) {
         return
     else {
         const id = e.target.dataset.index;
-        fetchEventsById(id)        
+        if (id != undefined) {
+        fetchEventsById(id)}
+        return        
     }   
 }
 eventsList.addEventListener('click', getEventId);
@@ -16,9 +19,9 @@ eventsList.addEventListener('click', getEventId);
 function renderModal(data) {
     const eventData = {
         ...data,
-        smallImg: data.images.find(img => img.width === 305 && img.height === 225),
-        largeImg: data.images.find(img => img.width === 1024 && img.height === 683),
-    }
+        smallImg: data.images.find(img => img.width === 305),
+        largeImg: data.images.find(img => img.width === 1024),
+    };
     modalPlace.innerHTML =
     `<div class="backdrop">
         <div class="modal">
@@ -61,9 +64,14 @@ function renderModal(data) {
         </div>
     </div>`
     closeModal();
+    localStorage.setItem("event-name", data._embedded.attractions[0].name)
     setTimeout(() => {
         const backdrop = document.querySelector(".backdrop");
-        backdrop.addEventListener("click", clearModal)
+        backdrop.addEventListener("click", clearModal);
+        const moreBtn = document.querySelector(".modal__more");
+        moreBtn.addEventListener("click", (e) => {
+            searchInput.value = localStorage.getItem("event-name");
+            setTimeout(() => searchEvents(e), 500)})
     }, 1000)
 }
 
@@ -77,7 +85,7 @@ async function fetchEventsById(id) {
             url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
           });
           renderModal(response.data)
-          
+          console.log(response.data)
           return response.data;
         } catch (error) {
           console.log(`Error: ${error}`);
@@ -99,7 +107,3 @@ const closeModal = () => {
 
 const clearModal = () => modalPlace.innerHTML=``;
 export { renderModal };
-
-const modalMoreFn = (e) => {
-    searchEvents()
-}

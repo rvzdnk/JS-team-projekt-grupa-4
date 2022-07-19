@@ -1,7 +1,7 @@
 import axios from "axios";
 import { searchEvents } from "./searchEvent"
 const modalPlace = document.querySelector(".place-for-modal");
-const backdrop = document.querySelector(".backdrop");
+
 const eventsList = document.querySelector(".events");
 function getEventId(e) {
     if (!e.target.closest('li'))
@@ -60,7 +60,11 @@ function renderModal(data) {
             <button class="modal__more" type="button"> More from this author </button>
         </div>
     </div>`
-    closeModal()
+    closeModal();
+    setTimeout(() => {
+        const backdrop = document.querySelector(".backdrop");
+        backdrop.addEventListener("click", clearModal)
+    }, 1000)
 }
 
 

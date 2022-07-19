@@ -233,4 +233,10 @@ margin: 20px;
   top: 30px;
   }
 
+  .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   @keyframes animatetop{from{top:-300px;opacity:0} to{top:45vh;opacity:1}}

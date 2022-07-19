@@ -1,19 +1,17 @@
-
 import axios from "axios";
 const modalPlace = document.querySelector(".place-for-modal");
 const backdrop = document.querySelector(".backdrop");
+const eventsList = document.querySelector(".events");
+const modalClose = document.querySelector(".modal__close");
 function getEventId(e) {
     if (!e.target.closest('li'))
-        {console.log(`wrong target`)}
+        return
     else {
         const id = e.target.dataset.index;
-        console.log(id)
-        fetchEventsById(id)
-        
-    }
-    
+        fetchEventsById(id)        
+    }   
 }
-document.addEventListener('click', getEventId);
+eventsList.addEventListener('click', getEventId);
 
 function renderModal(data) {
     const eventData = {
@@ -21,51 +19,52 @@ function renderModal(data) {
         smallImg: data.images.find(img => img.width === 305 && img.height === 225),
         largeImg: data.images.find(img => img.width === 1024 && img.height === 683),
     }
-    console.log(data)
     modalPlace.innerHTML =
     `<div class="backdrop">
         <div class="modal">
             <div class="modal__header">
-                <img src="${eventData.smallImg.url}" alt="event's icon">
+                <div class="modal__header-img"><img src="${eventData.smallImg.url}" alt="event's icon">
+                <a class="modal__close" href=#></a></div>
             </div>
             <div class="modal__main">
                 <img class="event-img" src="${eventData.largeImg.url}">
                 <ul class="modal__about">
                 <li class="modal__text">
                     <span class="modal__about-span">INFO</span>
-                ${data.info}  
+                    <p class="modal__about-text">${data.name}</p>  
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHEN</span>
-                ${data.dates.start.localDate},
-                ${data.dates.start.localTime}, ${data.dates.timezone}
+                    <p class="modal__about-text">
+                    ${data.dates.start.localDate},</br>
+                    ${data.dates.start.localTime} (${data.dates.timezone})</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHERE</span>
-                ${data._embedded.venues[0].city.name}, ${data._embedded.venues[0].country.name},
-                ${data._embedded.venues[0].name}
+                    <p class="modal__about-text">${data._embedded.venues[0].city.name}, ${data._embedded.venues[0].country.name},
+                ${data._embedded.venues[0].name}</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHO</span>
-                ${data.name}
+                    <p class="modal__about-text">${data._embedded.attractions[0].name}</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">PRICES</span>
-                
+                    <p class="modal__about-price"> Standard: ${data.priceRanges[0].min} ${data.priceRanges[0].currency}</p>
+                    <button class="modal__about-btn" type="button"> BUY TICKETS </button>
+                    <p class="modal__about-price"> VIP: ${data.priceRanges[0].max} ${data.priceRanges[0].currency}</p>
+                    <button class="modal__about-btn" type="button"> BUY TICKETS </button>
                 </li>
                 </ul>
             </div>
-            <button class="modal__more"> More from this author </button>
+            <button class="modal__more" type="button"> More from this author </button>
         </div>
     </div>`
-    }
+    closeModal()
+}
 
 
-document.addEventListener("keydown", event => {
-        if (event.code === 'escape') {
-            modalPlace.innerHTML=''
-        } else return
-});
+
 async function fetchEventsById(id) {
         const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';      
         try {
@@ -73,18 +72,23 @@ async function fetchEventsById(id) {
             method: 'get',
             url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
           });
-          console.log(response)
           renderModal(response.data)
+          
           return response.data;
         } catch (error) {
           console.log(`Error: ${error}`);
         }
       }
 
-        <button class="modal__more"> More from this author </button>
-    <div>
-    </div>`;
-}
 
-export { renderModal };
+document.addEventListener("keydown", (e) => {
+    if (e.code === 'Escape') {
+        modalPlace.innerHTML=''
+    } return});
+
+const closeModal = (e) => {
+    if (modalPlace.innerHTML.length > 100) {
+    modalClose.addEventListener("click", () => modalPlace.innerHTML='')
+} return}
+
 

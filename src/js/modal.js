@@ -29,19 +29,26 @@ function getEventId(e) {
     }   
 }
 
+const whoFn = (data) => {
+    if (data._embedded.attractions[0].name != undefined) {
+        return data._embedded.attractions[0].name
+    }
+    else return data.name
+}
+
 const renderModal = (data) => {
     const eventData = {
         ...data,
         smallImg: data.images.find(img => img.width === 305),
         largeImg: data.images.find(img => img.width === 1024),
-        who: data._embedded.attractions[0].name
+        who: whoFn(data)
     };
     setTimeout(() => {
         renderData(eventData)
     },20); 
     setTimeout(() => {
         closeModal();
-        localStorage.setItem("event-name", data._embedded.attractions[0].name)
+        localStorage.setItem("event-name", eventData.who)
     },500)
     setTimeout(() => {
         const backdrop = qs(".backdrop");
@@ -69,8 +76,7 @@ async function fetchEventsById(id) {
         method: 'get',
         url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
       });
-      renderModal(response.data)
-      console.log(response.data)
+      renderModal(response.data);
       return response.data;
     } catch (error) {
       console.log(`Error: ${error}`);

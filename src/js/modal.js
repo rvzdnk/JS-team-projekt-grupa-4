@@ -1,9 +1,23 @@
+// imports
 import axios from "axios";
-import { searchEvents } from "./searchEvent"
-const modalPlace = document.querySelector(".place-for-modal");
-const searchInput = document.querySelector('.form__search');
+import { searchEvents } from "./searchEvent";
 
-const eventsList = document.querySelector(".events");
+// qs
+const qs = (name) => document.querySelector(name);
+const modalPlace = qs('.place-for-modal');
+const searchInput = qs('.form__search');
+const eventsList = qs('.events');
+
+// listeners
+eventsList.addEventListener('click', getEventId);
+
+document.addEventListener("keydown", (e) => {
+    if (e.code === 'Escape') {
+        modalPlace.innerHTML=''
+    } return});
+
+// functions
+
 function getEventId(e) {
     if (!e.target.closest('li'))
         return
@@ -14,14 +28,56 @@ function getEventId(e) {
         return        
     }   
 }
-eventsList.addEventListener('click', getEventId);
 
-function renderModal(data) {
+const renderModal = (data) => {
     const eventData = {
         ...data,
         smallImg: data.images.find(img => img.width === 305),
         largeImg: data.images.find(img => img.width === 1024),
+        who: data._embedded.attractions[0].name
     };
+    setTimeout(() => {
+        renderData(eventData)
+    },20); 
+    setTimeout(() => {
+        closeModal();
+        localStorage.setItem("event-name", data._embedded.attractions[0].name)
+    },500)
+    setTimeout(() => {
+        const backdrop = qs(".backdrop");
+        backdrop.addEventListener("click", clearModal);
+        const moreBtn = qs(".modal__more");
+        moreBtn.addEventListener("click", (e) => {
+            searchInput.value = localStorage.getItem("event-name");
+            setTimeout(() => searchEvents(e), 500)})
+    }, 1000)
+}
+
+const closeModal = () => {
+    if (modalPlace) {
+        const modalClose = qs(".modal__close");
+        modalClose.addEventListener("click", clearModal)
+        
+} return};
+
+const clearModal = () => modalPlace.innerHTML=``;
+
+async function fetchEventsById(id) {
+    const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';      
+    try {
+      const response = await axios({
+        method: 'get',
+        url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
+      });
+      renderModal(response.data)
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  }
+
+const renderData = (eventData) => {
     modalPlace.innerHTML =
     `<div class="backdrop">
         <div class="modal">
@@ -34,76 +90,33 @@ function renderModal(data) {
                 <ul class="modal__about">
                 <li class="modal__text">
                     <span class="modal__about-span">INFO</span>
-                    <p class="modal__about-text">${data.name}</p>  
+                    <p class="modal__about-text">${eventData.name}</p>  
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHEN</span>
                     <p class="modal__about-text">
-                    ${data.dates.start.localDate},</br>
-                    ${data.dates.start.localTime} (${data.dates.timezone})</p>
+                    ${eventData.dates.start.localDate},</br>
+                    ${eventData.dates.start.localTime} (${eventData.dates.timezone})</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHERE</span>
-                    <p class="modal__about-text">${data._embedded.venues[0].city.name}, ${data._embedded.venues[0].country.name},
-                ${data._embedded.venues[0].name}</p>
+                    <p class="modal__about-text">${eventData._embedded.venues[0].city.name}, ${eventData._embedded.venues[0].country.name},
+                ${eventData._embedded.venues[0].name}</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">WHO</span>
-                    <p class="modal__about-text">${data._embedded.attractions[0].name}</p>
+                    <p class="modal__about-text">${eventData.who}</p>
                 </li>
                 <li class="modal__text">
                     <span class="modal__about-span">PRICES</span>
-                    <p class="modal__about-price"> Standard: ${data.priceRanges[0].min} ${data.priceRanges[0].currency}</p>
-                    <button class="modal__about-btn" type="button" onclick="window.location.href='${data.url}';"> BUY TICKETS </button>
-                    <p class="modal__about-price"> VIP: ${data.priceRanges[0].max} ${data.priceRanges[0].currency}</p>
-                    <button class="modal__about-btn" type="button" onclick="window.location.href='${data.url}';"> BUY TICKETS </button>
+                    <p class="modal__about-price"> Standard: ${eventData.priceRanges[0].min} ${eventData.priceRanges[0].currency}</p>
+                    <button class="modal__about-btn" type="button" onclick="window.location.href='${eventData.url}';"> BUY TICKETS </button>
+                    <p class="modal__about-price"> VIP: ${eventData.priceRanges[0].max} ${eventData.priceRanges[0].currency}</p>
+                    <button class="modal__about-btn" type="button" onclick="window.location.href='${eventData.url}';"> BUY TICKETS </button>
                 </li>
                 </ul>
             </div>
             <button class="modal__more" type="button"> More from this author </button>
         </div>
     </div>`
-    closeModal();
-    localStorage.setItem("event-name", data._embedded.attractions[0].name)
-    setTimeout(() => {
-        const backdrop = document.querySelector(".backdrop");
-        backdrop.addEventListener("click", clearModal);
-        const moreBtn = document.querySelector(".modal__more");
-        moreBtn.addEventListener("click", (e) => {
-            searchInput.value = localStorage.getItem("event-name");
-            setTimeout(() => searchEvents(e), 500)})
-    }, 1000)
 }
-
-
-
-async function fetchEventsById(id) {
-        const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';      
-        try {
-          const response = await axios({
-            method: 'get',
-            url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
-          });
-          renderModal(response.data)
-          console.log(response.data)
-          return response.data;
-        } catch (error) {
-          console.log(`Error: ${error}`);
-        }
-      }
-
-
-document.addEventListener("keydown", (e) => {
-    if (e.code === 'Escape') {
-        modalPlace.innerHTML=''
-    } return});
-
-const closeModal = () => {
-    if (modalPlace) {
-        const modalClose = document.querySelector(".modal__close");
-        modalClose.addEventListener("click", clearModal)
-        
-} return};
-
-const clearModal = () => modalPlace.innerHTML=``;
-export { renderModal };

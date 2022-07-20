@@ -126,3 +126,5 @@ const renderData = (eventData) => {
         </div>
     </div>`
 }
+
+export { renderModal };

@@ -24,12 +24,11 @@ document
     pageNr = 0;
     selectedCountry();
     searchEvents(event);
-    console.log(countryCode);
   });
 
 // Search selector
 
-fetchEvents('concert', 'US', pageNr)
+fetchEvents('concert', 'PL', pageNr)
   .then(data => {
     // console.log(data);
     renderEvents(data);
@@ -57,8 +56,8 @@ export function searchEvents(event) {
 }
 
 export function renderEvents(data) {
-  console.log(data);
-  console.log(data.page);
+  // console.log(data);
+  // console.log(data.page);
 
   const eventDetail = data._embedded.events
   .map(

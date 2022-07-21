@@ -73,16 +73,14 @@
     color: #ffffff;
   }
 }
-body {
-  background-color: darkgrey;
-}
 // background picture
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (min-width: 320px) {
   .wrapper {
     background-image: url('../images/body/bg-body-mobile.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-color: rgb(24, 22, 22);
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),

@@ -1,8 +1,6 @@
 const preloader = document.querySelector('#preloader');
-const body = document.querySelector('body');
-preloader.classList.add('show-preloader');
 
-body.addEventListener('load', setTimeout(preload, 900));
+window.addEventListener('load', setTimeout(preload, 1100));
 
 function preload() {
   preloader.classList.remove('show-preloader');

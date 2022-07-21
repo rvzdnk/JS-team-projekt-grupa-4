@@ -73,9 +73,8 @@
     color: #ffffff;
   }
 }
-.wrapper {
-  min-height: 2376px;
-  background-color: grey;
+body {
+  background-color: darkgrey;
 }
 // background picture
 @media screen and (min-width: 320px) and (max-width: 767px) {

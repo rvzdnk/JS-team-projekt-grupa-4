@@ -58,13 +58,18 @@ export function searchEvents(event) {
 export function renderEvents(data) {
   // console.log(data);
   // console.log(data.page);
-
+  Loading.dots({
+    svgColor: '#dc56c5',
+  });
+  Loading.remove(500);
   const eventDetail = data._embedded.events
-  .map(
+    .map(
       ({ id, name, dates, images, _embedded }) => `
                     <li class ="events__item" data-index=${id}>
                         <a href=#>
-                            <img class="event__img" src="${images.filter(e => e.ratio === '4_3').map(e => `${e.url}`)}"/>
+                            <img class="event__img" src="${images
+                              .filter(e => e.ratio === '4_3')
+                              .map(e => `${e.url}`)}"/>
                         </a>
                         <div class="events__info>
                             <p class="events__info-name">

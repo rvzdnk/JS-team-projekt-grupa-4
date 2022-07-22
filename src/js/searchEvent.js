@@ -66,11 +66,11 @@ export function renderEvents(data) {
     .map(
       ({ id, name, dates, images, _embedded }) => `
                     <li class ="events__item" data-index=${id}>
-                        <a href=#>
+                        
                             <img class="event__img" src="${images
                               .filter(e => e.ratio === '4_3')
                               .map(e => `${e.url}`)}"/>
-                        </a>
+                        
                         <div class="events__info>
                             <p class="events__info-name">
                             ${name}
@@ -91,4 +91,3 @@ export function renderEvents(data) {
 }
 
 searchForm.addEventListener('submit', searchEvents);
-events.addEventListener('click', renderModal);

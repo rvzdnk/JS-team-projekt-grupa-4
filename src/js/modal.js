@@ -1,9 +1,9 @@
 // imports
-import axios from "axios";
-import { searchEvents } from "./searchEvent";
+import axios from 'axios';
+import { searchEvents } from './searchEvent';
 
 // qs
-const qs = (name) => document.querySelector(name);
+const qs = name => document.querySelector(name);
 const modalPlace = qs('.place-for-modal');
 const searchInput = qs('.form__search');
 const eventsList = qs('.events');
@@ -11,81 +11,97 @@ const eventsList = qs('.events');
 // listeners
 eventsList.addEventListener('click', getEventId);
 
-document.addEventListener("keydown", (e) => {
-    if (e.code === 'Escape') {
-        modalPlace.innerHTML=''
-    } return});
+document.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    modalPlace.innerHTML = '';
+  }
+  return;
+});
 
 // functions
 
 function getEventId(e) {
-    if (!e.target.closest('li'))
-        return
-    else {
-        const id = e.target.dataset.index;
-        if (id != undefined) {
-        fetchEventsById(id)}
-        return        
-    }   
+  const li = e.target.closest('li');
+  const id = li.dataset.index;
+  if (id !== undefined) {
+    fetchEventsById(id);
+  }
+  return;
 }
 
-const whoFn = (data) => {
-    if (data._embedded.attractions[0].name != undefined) {
-        return data._embedded.attractions[0].name
+const whoFn = data => {
+  if (data._embedded.attractions[0].name != undefined) {
+    return data._embedded.attractions[0].name;
+  } else return data.name;
+};
+
+const renderModal = data => {
+  const eventData = {
+    ...data,
+    smallImg: data.images.find(img => img.width === 305),
+    largeImg: data.images.find(img => img.width === 1024),
+    who: whoFn(data),
+  };
+  setTimeout(() => {
+    renderData(eventData);
+  }, 20);
+  setTimeout(() => {
+    closeModal();
+    localStorage.setItem('event-name', eventData.who);
+  }, 500);
+
+  setTimeout(() => {
+    try {
+      const backdrop = qs('.backdrop');
+      backdrop.addEventListener('click', clearModal);
+      const moreBtn = qs('.modal__more');
+      moreBtn.addEventListener('click', e => {
+        searchInput.value = localStorage.getItem('event-name');
+        setTimeout(() => searchEvents(e), 500);
+      });
+    } catch (error) {
+      console.log(error.message + ' Backdrop closed sooner than appeared');
     }
-    else return data.name
-}
-
-const renderModal = (data) => {
-    const eventData = {
-        ...data,
-        smallImg: data.images.find(img => img.width === 305),
-        largeImg: data.images.find(img => img.width === 1024),
-        who: whoFn(data)
-    };
-    setTimeout(() => {
-        renderData(eventData)
-    },20); 
-    setTimeout(() => {
-        closeModal();
-        localStorage.setItem("event-name", eventData.who)
-    },500)
-    setTimeout(() => {
-        const backdrop = qs(".backdrop");
-        backdrop.addEventListener("click", clearModal);
-        const moreBtn = qs(".modal__more");
-        moreBtn.addEventListener("click", (e) => {
-            searchInput.value = localStorage.getItem("event-name");
-            setTimeout(() => searchEvents(e), 500)})
-    }, 1000)
-}
+  }, 1000);
+};
 
 const closeModal = () => {
+  try {
     if (modalPlace) {
-        const modalClose = qs(".modal__close");
-        modalClose.addEventListener("click", clearModal)
-        
-} return};
+      const modalClose = qs('.modal__close');
+      modalClose.addEventListener('click', clearModal);
+    }
+  } catch (error) {
+    console.log(error.message + ' Backdrop closed sooner than appeared');
+  }
+  return;
+};
 
-const clearModal = () => modalPlace.innerHTML=``;
+const clearModal = () => {
+  try {
+    modalPlace.innerHTML = ``;
+  } catch (error) {
+    console.log(error);
+  }
+  return;
+};
 
 async function fetchEventsById(id) {
-    const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';      
-    try {
-      const response = await axios({
-        method: 'get',
-        url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
-      });
-      renderModal(response.data);
-      return response.data;
-    } catch (error) {
-      console.log(`Error: ${error}`);
-    }
+  const API_KEY = 'fEWnHm1nOc4BRRBNn8aA5fAFLjYDK8YZ';
+  try {
+    const response = await axios({
+      method: 'get',
+      url: `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${API_KEY}&locale=*`,
+    });
+    renderModal(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(`Error: ${error}`);
   }
+}
 
-const renderData = (eventData) => {
-    modalPlace.innerHTML =
-    `<div class="backdrop">
+const renderData = eventData => {
+  modalPlace.innerHTML = `<div class="backdrop">
         <div class="modal">
             <div class="modal__header">
                 <div class="modal__header-img"><img src="${eventData.smallImg.url}" alt="event's icon">
@@ -124,7 +140,7 @@ const renderData = (eventData) => {
             </div>
             <button class="modal__more" type="button"> More from this author </button>
         </div>
-    </div>`
-}
+    </div>`;
+};
 
 export { renderModal };

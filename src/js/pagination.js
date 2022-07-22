@@ -27,26 +27,22 @@ function renderPagination(data) {
   const currentPage = data.page.number;
   const pageRange = currentPage + 5;
 
-  //     visibleArrayOfPages = arrayOfPages.map((i) =>
-  //     `<button type="submit" value=${i} id=${i} class=pagination__btn>${i + 1}</button>`)
-  //       .join("");
-  // paginationArray.innerHTML = visibleArrayOfPages;
   if (currentPage === 0) {
     let firstFive = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(currentPage, pageRange)
       .join('');
     let lastOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(-1)
       .join('');
@@ -58,18 +54,18 @@ function renderPagination(data) {
     let firstFive2 = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(currentPage - 1, pageRange - 1)
       .join('');
     let lastOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(-1)
       .join('');
@@ -81,18 +77,18 @@ function renderPagination(data) {
     let firstFive2 = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(currentPage - 2, pageRange - 2)
       .join('');
     let lastOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(-1)
       .join('');
@@ -104,18 +100,18 @@ function renderPagination(data) {
     let firstFive2 = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(currentPage - 3, pageRange - 3)
       .join('');
     let lastOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button><li>`
       )
       .slice(-1)
       .join('');
@@ -127,27 +123,27 @@ function renderPagination(data) {
     let firstFive3 = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(currentPage - 2, pageRange - 2)
       .join('');
     let lastOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(-1)
       .join('');
     let firstOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(0, 1)
       .join('');
@@ -156,18 +152,18 @@ function renderPagination(data) {
     let lastFive = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(-5)
       .join('');
     let firstOne = arrayOfPages
       .map(
         i =>
-          `<button type="submit" value=${i} id=${i} class=pagination__btn>${
+          `<li><button type="submit" value=${i} id=${i} class=pagination__btn>${
             i + 1
-          }</button>`
+          }</button></li>`
       )
       .slice(0, 1)
       .join('');
@@ -196,7 +192,7 @@ function changePage(data) {
 function handleChangePage(event) {
   event.preventDefault();
   page = event.target.value;
-  fetchEvents('concert', 'US', page)
+  fetchEvents('concert', 'PL', page)
     .then(data => {
       renderEvents(data);
       pagination(data);

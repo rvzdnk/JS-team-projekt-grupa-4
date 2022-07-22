@@ -1,6 +1,8 @@
 const preloader = document.querySelector('#preloader');
 
-window.addEventListener('load', setTimeout(preload, 1100));
+const timeout = () => setTimeout(preload, 500);
+
+window.addEventListener('load', timeout);
 
 function preload() {
   preloader.classList.remove('show-preloader');

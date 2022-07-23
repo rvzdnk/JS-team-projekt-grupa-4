@@ -7,24 +7,29 @@ import { renderModal } from './modal';
 
 const searchForm = document.querySelector('.form');
 const searchInput = document.querySelector('.form__search');
-const selectDrop = document.querySelector('#countries');
 const events = document.querySelector('.events');
+const dropdownSelected = document.querySelector(".dropdown__selected");
+const inputList = document.querySelectorAll(".dropdown__input")
+
 let pageNr = 0;
 // Country selector
 let countryCode = 'US';
 
-function selectedCountry() {
-  let selectedValue = document.getElementsByTagName('select')[0].value;
-  return (countryCode = selectedValue);
-}
+export const countrySelector = 
+  inputList.forEach(input => {
+    if(input.id === dropdownSelected.textContent){
+      countryCode = input.value; 
+  }}
+)
 
-document
-  .getElementsByTagName('select')[0]
-  .addEventListener('change', function () {
-    pageNr = 0;
-    selectedCountry();
-    searchEvents(event);
-  });
+dropdownSelected
+.addEventListener('change', function(){
+  pageNr = 0;
+  countryCode;
+  searchEvents();
+}
+);
+
 
 // Search selector
 
@@ -40,8 +45,8 @@ fetchEvents('concert', 'PL', pageNr)
 
 // Function which search events by selectors
 
-export function searchEvents(event) {
-  event.preventDefault();
+export function searchEvents() {
+  // event.preventDefault();
   fetchEvents(searchInput.value, countryCode, pageNr)
     .then(data => {
       // console.log(data);

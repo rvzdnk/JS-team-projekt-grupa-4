@@ -10,36 +10,32 @@
   transition-duration: 1s;
   z-index: 1;
   backdrop-filter: blur(3px);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .modal {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  max-height: calc(100vh - 47px);
   width: 272px;
-  top: 50%;
+  top: 450px;
   left: 48vw;
   z-index: 99;
   transform: translate(-50%, -50%);
   border-radius: 150px 0px;
-  overflow-y: auto;
   background-color: #fff2fd;
   padding-bottom: 50px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+
   @media screen and (min-width: 768px) {
     width: 595px;
     border-radius: 300px 0px;
+    top: 500px;
   }
   @media screen and (min-width: 1200px) {
     width: 850px;
     border-radius: 255px 0px;
+    top: 550px;
   }
   animation: animatetop 0.4s;
   // HEADER

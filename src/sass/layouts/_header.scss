@@ -55,8 +55,7 @@
   position: relative;
 }
 .form__search,
-.form__dropdown,
-option {
+.form__dropdown {
   border: none;
   background: transparent;
   font-size: 16px;
@@ -65,7 +64,10 @@ option {
   outline: none;
   width: 270px;
 }
-option,
+.form__dropdown__container option {
+  background-color: lightgray;
+}
+
 .form__search__container,
 .form__dropdown {
   text-align: left;
@@ -195,4 +197,9 @@ option,
     background-size: cover;
     min-height: 446px;
   }
+}
+select {
+  -webkit-appearance: none; /*Removes default chrome and safari style*/
+  -moz-appearance: none; /* Removes Default Firefox style*/
+  appearance: none;
 }

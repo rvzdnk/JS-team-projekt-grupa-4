@@ -1,0 +1,828 @@
+[33mcommit 305ea763f771f60af6eeeb136496a576b440ec70[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 23 22:59:45 2022 +0200
+
+    update dropdown search
+
+[33mcommit 1d06e7bef947c33f9c545cbabc8e64dbda5f258e[m
+Merge: 41f5cc6 b43634b
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Fri Jul 22 23:15:03 2022 +0200
+
+    Merge pull request #19 from rvzdnk/bugfix/modal,preload
+    
+    bugfix
+
+[33mcommit b43634b498c5fd0009c5656b74fe46195cca2f58[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Fri Jul 22 23:13:39 2022 +0200
+
+    bugfix
+    
+    Fixed opening modal on entire li item
+    Fixed pagination to 500ms & wrapper min-height set
+    added some try-catch to backdrop null value while closing modal on escape (due to backdrop appearing slower than esc can be pressed)
+    deleted a tag from rendering events (scrolling page up unnecessarly)
+    deleted renderModal from searvhEvent causing find issue
+
+[33mcommit 41f5cc64be6b108745de033397c6d86c5092b873[m
+Merge: fb01475 cac609d
+Author: StanislawZielinski <94519797+StanislawZielinski@users.noreply.github.com>
+Date:   Fri Jul 22 19:45:14 2022 +0200
+
+    Merge pull request #18 from rvzdnk/paginationFix
+    
+    Update pagination.js
+
+[33mcommit cac609da0e24a09839716c4c79466937ffe0ca01[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Fri Jul 22 19:44:11 2022 +0200
+
+    Update pagination.js
+
+[33mcommit fb014759bd13b6a894b817c0578a06df959c9dac[m
+Merge: 13027f9 00495a5
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Thu Jul 21 18:44:15 2022 +0200
+
+    Merge pull request #17 from rvzdnk/preloader/fix
+    
+    preloader
+
+[33mcommit 00495a5510aea19efff6019025c3aeccaf91ed8c[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Thu Jul 21 18:42:44 2022 +0200
+
+    preloader
+    
+    moved on top to index.html
+    class show-preloader added to HTML
+    back from boady to window preloader onload
+
+[33mcommit 13027f9f79e7ffb4ffea642f17a930803cb2f998[m
+Merge: aece453 a32dfec
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Thu Jul 21 18:07:26 2022 +0200
+
+    Merge pull request #16 from rvzdnk/smallFixes/css
+    
+    Loading updates
+
+[33mcommit a32dfeca7532a2cea3f3bae96665e947a7f25eec[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Thu Jul 21 18:04:11 2022 +0200
+
+    Loading updates
+    
+    Preload setTimeout increased and set on body
+    Loading for fetch added
+
+[33mcommit aece453046166e17fb03f1a34238c81052115651[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Wed Jul 20 21:21:41 2022 +0200
+
+    Update _header.scss
+
+[33mcommit 2ff449d718120d070230e63dc3feb73c77b9a972[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Wed Jul 20 17:32:20 2022 +0200
+
+    Update modal.js
+
+[33mcommit a7b4c59ecf4b677bacf188bcf8a8da8eb8c43469[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Wed Jul 20 17:01:31 2022 +0200
+
+    bugfix/console.log
+
+[33mcommit fce7c69f1cb160556989360f92580432a2ca98f6[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Wed Jul 20 16:57:42 2022 +0200
+
+    Update modal.js
+
+[33mcommit ac0d99f6daf387a4267072e14413c9832cb5a328[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Wed Jul 20 16:39:05 2022 +0200
+
+    refaktoryzacja modal
+
+[33mcommit 15798b6a1ae5ccaf1e2e549dd887223d59db87b6[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Wed Jul 20 13:45:02 2022 +0200
+
+    bugfix/modal-top-transition
+
+[33mcommit 81f827c5b0fc6fed17dedd10be7ecb78e4906af8[m
+Merge: d586b9b 47331f4
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Tue Jul 19 23:24:43 2022 +0200
+
+    Merge pull request #15 from rvzdnk/css/fix
+    
+    css fix
+
+[33mcommit 47331f4e10181f2c6b124dd8660d9bf6bc74ad0c[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Tue Jul 19 23:24:03 2022 +0200
+
+    css fix
+    
+    added scroll on modal window
+    fixed css of modal window
+    fixed white strap at the bottom when loading the page
+    fixed height of cards
+
+[33mcommit d586b9b15a6c68be9d5e28dff0cccbef5a034e8b[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 18:38:44 2022 +0200
+
+    feature/moreBTN
+
+[33mcommit c00536475f062204d3a64846ce984b1af8b4e1c0[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:49:12 2022 +0200
+
+    bugfix/backdrop-click-to-clse-modal
+
+[33mcommit 2f17f15c5f4002ad2078f02194cb773197ec64e1[m
+Merge: f3274b0 0f1c688
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:36:35 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit f3274b0cd51448dfcc2b4df2c405234faae27707[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:36:32 2022 +0200
+
+    bugfix/backdrop
+
+[33mcommit 0f1c68827815f8ba3d181993fe840f0b13418aa0[m
+Merge: e7051f8 e422f16
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Tue Jul 19 17:19:24 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit e422f1675c5bbc6ee3a2d34793ed9fee8b7e832b[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:19:16 2022 +0200
+
+    bugfix/modal-close-by-cross
+
+[33mcommit e7051f8d52e387bc2f5c638b65f5c5fd47201ff2[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Tue Jul 19 17:12:42 2022 +0200
+
+    sort fix
+
+[33mcommit 90dbdd557de4a7af9f694ff780dd6abd3d855643[m
+Merge: e64ece8 6b682ff
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:11:19 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit e64ece8ff86477f8a3140c04a5b5ba7471d81eba[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 17:10:49 2022 +0200
+
+    bugfix/cross-escape
+
+[33mcommit 6b682fff9a98beb208207bc10e65e6a62cc3df91[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Tue Jul 19 16:57:31 2022 +0200
+
+    preloader & image path fix
+
+[33mcommit b71cb07a02d1f8bc1afc3a12c87764116cd21966[m
+Merge: 60cdaed aa06249
+Author: StanislawZielinski <94519797+StanislawZielinski@users.noreply.github.com>
+Date:   Tue Jul 19 12:04:56 2022 +0200
+
+    Merge pull request #14 from rvzdnk/pagination/animation
+    
+    test
+
+[33mcommit aa062492b448a26adac0cdf3b66454d4f0799e83[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Tue Jul 19 12:02:54 2022 +0200
+
+    test
+
+[33mcommit 60cdaed84147e37b9b2e7799a57cb373a2aecfe0[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Tue Jul 19 08:48:42 2022 +0200
+
+    Update modal.js
+    
+    added missing export renderModal
+
+[33mcommit 1dcf8708a882665db513b23a0184aef63a300cd0[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Tue Jul 19 07:19:01 2022 +0200
+
+    bbugfix/modal
+
+[33mcommit eeb1e8271ed7a460c43385760a277018d29af575[m
+Merge: 7c7fdb0 274252d
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Mon Jul 18 23:04:44 2022 +0200
+
+    Merge pull request #12 from rvzdnk/modal
+    
+    Modal
+
+[33mcommit 274252d3fe12958ecbddc3963b626dc9d2726146[m
+Merge: 532cbe7 7c7fdb0
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Mon Jul 18 23:04:37 2022 +0200
+
+    Merge branch 'main' into modal
+
+[33mcommit 7c7fdb0a0957c69d043ca5cc89db75a6765b6a6d[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 18 23:01:49 2022 +0200
+
+    preloader
+
+[33mcommit 779317590dc7d2e1d3c283293085c5b52811bf55[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 22:47:19 2022 +0200
+
+    Update pagination.js
+    
+    firstFive declared
+
+[33mcommit 429cc7b91224e512bfe0ddd1fa6f8e28578463e1[m
+Merge: be26625 811523b
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 22:37:08 2022 +0200
+
+    Merge pull request #13 from rvzdnk/pagination/pageNr/Fix
+    
+    deploy fix
+
+[33mcommit 811523bfbd8aef250d417fc01012e6866908ba33[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 22:36:34 2022 +0200
+
+    deploy fix
+    
+    pageNr fixed to page in pagination.js as it is differfent variable than pageNr from fetch.js and imported to searchEvent.js
+
+[33mcommit be266251f9987c39aa8ae0c234d345a38945d4b3[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 21:42:54 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 611787bff6f281635e2c939723ec33ac06d49356[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 21:23:52 2022 +0200
+
+    Update searchEvent.js
+    
+    line 24 commented
+    image index changed to 6 for better quality
+
+[33mcommit 532cbe7d11b5c9cacd900bf1c9649aad77329f23[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Mon Jul 18 20:10:57 2022 +0200
+
+    123
+
+[33mcommit 0a2414bca6651c574f7b71da21edee9f5059de4c[m
+Merge: cb1efd1 5c0b357
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 20:01:44 2022 +0200
+
+    Merge pull request #11 from rvzdnk/check
+    
+    Reverse fix
+
+[33mcommit 5c0b35730a45b5bde1cdceaa00493213ff78405b[m
+Merge: 886cc2f cb1efd1
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 20:00:21 2022 +0200
+
+    Merge branch 'main' into check
+
+[33mcommit 886cc2fa672d55a67473aa8b0e71937e85ae9240[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 19:56:16 2022 +0200
+
+    Reverse fix
+    
+    pageNr reversed changes
+    changed image from index 2 to 4
+    align items center deleted
+
+[33mcommit cb1efd196eaed6d6c162bd84e446344966433788[m
+Merge: 9147c6f 98b6684
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 19:27:51 2022 +0200
+
+    Merge pull request #10 from rvzdnk/check
+    
+    SmallFixes
+
+[33mcommit 98b6684b3915fe62a8cd4a9c9d36b77c71b5b4e6[m
+Merge: 5bddd9b 9147c6f
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 19:27:31 2022 +0200
+
+    Merge branch 'main' into check
+
+[33mcommit 5bddd9bbaaac87bba91261748e72330dff26a182[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 19:25:02 2022 +0200
+
+    SmallFixes
+    
+    fetched image size changed
+    pageNr moved from pagination.js to searchEvent.js
+    Max height if event__item deleted
+    width of overlay changed from vw to % in header
+
+[33mcommit 0c1c2882e351fc13c74ce6c6cbc86207334e63cc[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Mon Jul 18 19:19:55 2022 +0200
+
+    2
+
+[33mcommit a8df49c0b492958c1fd7bf4ff2373e18f7018f08[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Mon Jul 18 18:39:07 2022 +0200
+
+    1
+
+[33mcommit ee7494182589d805bdf6845d7ffe9fe1d31afd2c[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Mon Jul 18 18:00:52 2022 +0200
+
+    bugfix/tringfind bug
+
+[33mcommit 9147c6f9df4186fa6db819a55e6966a7d34c52b4[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 17:04:08 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 73661324a315442bf79df9d4d7dc53b8e70805f7[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Mon Jul 18 16:57:27 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 306816c8671537ae8fe4da7b97afbc1731380ef3[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Mon Jul 18 14:31:40 2022 +0200
+
+    bugfix/modal-target
+
+[33mcommit 4202bfb0a578f00b38f7909bb5205bad0a75b4d0[m
+Merge: ad13d1a 35c43a4
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Mon Jul 18 09:28:01 2022 +0200
+
+    Merge pull request #9 from rvzdnk/origin/pagination-fix
+    
+    Update pagination.js
+
+[33mcommit 35c43a438d4306d2f5135ff748e7ef1b18cd0959[m
+Merge: 96d83d5 ad13d1a
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Mon Jul 18 09:27:52 2022 +0200
+
+    Merge branch 'main' into origin/pagination-fix
+
+[33mcommit 96d83d5f287f271269600e7b11bcb089e39f7617[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Mon Jul 18 07:56:36 2022 +0200
+
+    Update pagination.js
+
+[33mcommit 7b5cb8cb7aafac03a222619226125610b384017e[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Sun Jul 17 23:30:19 2022 +0200
+
+    Update pagination.js
+
+[33mcommit ad13d1ae46f9dd9eca08c50ac5f2d91a42967d68[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 20:23:05 2022 +0200
+
+    Update pagination.js
+
+[33mcommit dfb6eb33ec9d43f8ca591646c5c0fdc31c18be0f[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:30:26 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 6b93b9f58e64235df39874fd0a426237c7af57eb[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:26:23 2022 +0200
+
+    Update pagination.js
+
+[33mcommit bb0bafcc71ce08bdbd393392baef99acbf02cebc[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:22:42 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 5ebdc2c63fa7e0d899294752341e7dfdf3f29dc3[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:19:23 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 22df58fd399b45fbfb838c005395196939695bfd[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:17:52 2022 +0200
+
+    Update pagination.js
+
+[33mcommit 05b098b0b51ba832d6e997678969f5708f810320[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 17 10:15:11 2022 +0200
+
+    Update pagination.js
+
+[33mcommit 66198a12cee5ed546552b714ca58c5ba46d526ec[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 16 20:22:49 2022 +0200
+
+    pagination -hide-numbers
+
+[33mcommit f6efe862614f25f8800d32a67f842f56b9c2bd81[m
+Merge: a080177 dbbbf40
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Sat Jul 16 17:06:43 2022 +0200
+
+    Merge pull request #8 from rvzdnk/origin/pagnation
+    
+    test
+
+[33mcommit dbbbf404efc6f7e1ef8ad6269ec84a9db7832d01[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Sat Jul 16 11:56:19 2022 +0200
+
+    test
+
+[33mcommit a080177980647025d6b5216125f52d9178ab8822[m
+Merge: 2bf2803 5808d0b
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Fri Jul 15 16:39:22 2022 +0200
+
+    Merge pull request #7 from rvzdnk/origin/pagnation
+    
+    test
+
+[33mcommit 5808d0b8a1367d9b60601fa549633dd3b6af5be4[m
+Merge: df02fe0 2bf2803
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Fri Jul 15 16:38:21 2022 +0200
+
+    Merge branch 'main' into origin/pagnation
+
+[33mcommit df02fe015c5cc3a2561d053be600951afa4d50ee[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Fri Jul 15 15:13:56 2022 +0200
+
+    test
+
+[33mcommit 02741a80124cbdd93ca65a2fe6eb07ab2445df34[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Fri Jul 15 13:18:53 2022 +0200
+
+    modal 2
+
+[33mcommit 460be27d4d3778cf59bbd1e7ccde69fa6ec82570[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Fri Jul 15 11:09:00 2022 +0200
+
+    modal
+
+[33mcommit 2bf2803bb3ad1f27de21a412aaf37f0ab6f3f660[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Thu Jul 14 20:36:01 2022 +0200
+
+    Update fetchEvents.js
+
+[33mcommit e1fe008d04f06e2ec277fcc05b27d889d824ad38[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Thu Jul 14 20:29:35 2022 +0200
+
+    data to pagination
+
+[33mcommit 99bd56c4baa943860ed03a4c7be0688ea34fdeb9[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Thu Jul 14 17:11:33 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 84da551fc393ddd7f589c01d4ebf86f6766042ab[m
+Merge: 83c1387 6713dd7
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Thu Jul 14 15:55:39 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit 83c1387e29fd7efaa37ced947d77658a727e2e44[m
+Author: Paweł Rosłaniec <pawel94roslaniec@gmail.com>
+Date:   Thu Jul 14 15:55:35 2022 +0200
+
+    feature/modal (just beginning
+
+[33mcommit 6713dd71ba0587bc3f04db08e834d7a1650cba9b[m
+Merge: 20035ce 461aed8
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Wed Jul 13 21:00:45 2022 +0200
+
+    Merge pull request #6 from rvzdnk/paginationJoin
+    
+    notification
+
+[33mcommit 461aed8da8885424f7fc8a24c749ec1d8e2b1a81[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Wed Jul 13 20:59:55 2022 +0200
+
+    notification
+    
+    -updated notification on failure (no event/ country)
+    -clicking on filter runs now also the fetch event to have immediate results
+    -added notiflix library
+    -changed number of results on page from 21 to 20 for even view
+
+[33mcommit 20035cec94b809966a896579c05ded9f1c8f209e[m
+Merge: 3fe1f35 bc714fa
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Wed Jul 13 18:17:58 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit 3fe1f35e6ddb887e45f0403f421560ea26178611[m
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Wed Jul 13 18:17:53 2022 +0200
+
+    cssy do paginacji
+
+[33mcommit bc714fa98ea8dba712659dbe4a08c7f81b453cc1[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Wed Jul 13 17:51:34 2022 +0200
+
+    Update _main.scss
+
+[33mcommit e92749207342195d2efbe751e1c1a8bce13e8819[m
+Merge: 563cafa 93b6e1b
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Wed Jul 13 17:43:05 2022 +0200
+
+    Merge pull request #5 from rvzdnk/origin/fetch-fix
+    
+    Update searchEvent.js
+
+[33mcommit 93b6e1bb670d7108d1afd6cbf40e45d068853b55[m
+Author: StanislawZielinski <stanislaw.zielinski.poczta@gmail.com>
+Date:   Wed Jul 13 13:45:04 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit 563cafa65a05341d6282269865ac6f033efcefb8[m
+Merge: 7bf2809 d1734a0
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Tue Jul 12 22:48:32 2022 +0200
+
+    Merge pull request #4 from rvzdnk/fetchCSS
+    
+    1st fetch CSS
+
+[33mcommit d1734a087665098af917335d9a256610d8019475[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Tue Jul 12 22:47:23 2022 +0200
+
+    1st fetch CSS
+    
+    flex for fetch
+    responsive
+    added decorations
+
+[33mcommit 7bf2809f3380a094d58b534b9a1368450f077cb9[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Tue Jul 12 20:11:08 2022 +0200
+
+    commit
+
+[33mcommit b49151f288f73ee9c4c6fc50cd2b7a214ba527b5[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 11 22:26:31 2022 +0200
+
+    country sort
+
+[33mcommit 7eb92f64098836be9fdd369e2f92a596751842e7[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 11 21:08:38 2022 +0200
+
+    Update fetchEvents.js
+
+[33mcommit 0733205b20a8b077f0865b2eb8496eba2e9ccefb[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 11 21:07:41 2022 +0200
+
+    commit
+
+[33mcommit 6bddf87b3a3039b0b26affb6462c31bc6f8bd92a[m
+Merge: 9c1b20f 55ed49c
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 11 20:35:24 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit 9c1b20f1fefd32d24e39fe369cf7bc35af996a25[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Mon Jul 11 20:35:22 2022 +0200
+
+    Update fetchEvents.js
+
+[33mcommit 55ed49c5852b9a73c5625cf5d888e9adfaac2c44[m
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Mon Jul 11 18:17:56 2022 +0200
+
+    Update main.html
+    
+    dodałem htmla do paginacji
+
+[33mcommit d479ff7385559e2d1700f8e67da84a05705f8164[m
+Merge: 9112f06 f1de7e0
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Mon Jul 11 18:16:50 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit 9112f063d80fd147f617a2671b482d59b650790f[m
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Mon Jul 11 18:16:47 2022 +0200
+
+    Update main.html
+
+[33mcommit 5004186c18c6d9656bb4d7c826f972ad56b427d4[m
+Author: pchomiak <pchomiak@gmail.com>
+Date:   Mon Jul 11 18:14:04 2022 +0200
+
+    Update main.html
+    
+    dodałem htmla do paginacji
+
+[33mcommit f1de7e0e0da3798ff47b0236f031215d9d1cd106[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 10 20:45:41 2022 +0200
+
+    commit
+
+[33mcommit 16b4d5ef5561dbc3c82011bc57d313363149d1a6[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 10 20:31:02 2022 +0200
+
+    Update searchEvent.js
+
+[33mcommit d9a075cf9e665290fa75b25f6f6e974264ad1e26[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sun Jul 10 20:25:45 2022 +0200
+
+    Update _main.scss
+
+[33mcommit 179e972a3c1e250f969f48e03ac9b392494169b5[m
+Merge: a9202f4 81dfadc
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Sun Jul 10 20:24:42 2022 +0200
+
+    Merge pull request #2 from rvzdnk/css
+    
+    CSS
+
+[33mcommit 81dfadcea08e05ede37ecf4ec85771c0454f1431[m
+Merge: 8d7433a a9202f4
+Author: Rafał Zdunek <92248179+rvzdnk@users.noreply.github.com>
+Date:   Sun Jul 10 20:24:19 2022 +0200
+
+    Merge branch 'main' into css
+
+[33mcommit 8d7433a2310b151d2235cce50329b985d308d9bd[m
+Author: PatrycjaWiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Sun Jul 10 19:52:19 2022 +0200
+
+    updated form
+    
+    deleted default icons
+    fixed filter
+
+[33mcommit c1cdbfe9d95e0f4f4253dc3366329426a8b09c2f[m
+Author: PatrycjaWiza <patrycja.wiza@gmail.com>
+Date:   Sun Jul 10 18:50:54 2022 +0200
+
+    update final
+    
+    fixed logo
+    added icons to search and filter boxes
+    placeholder font color fixed
+    fixed margins regarding responsiveness
+
+[33mcommit a9202f4592a3d47b6709dbf356577d29198ecb8a[m
+Author: Patrycja Wiza <95050810+PatrycjaWiza@users.noreply.github.com>
+Date:   Sun Jul 10 00:33:44 2022 +0200
+
+    Update README.md
+
+[33mcommit bf2a4c3c78e28726e8ff378eec9d244bd9eecab8[m
+Author: PatrycjaWiza <patrycja.wiza@gmail.com>
+Date:   Sun Jul 10 00:13:23 2022 +0200
+
+    initial
+    
+    header, main, footer
+    needs to be fixed:
+    -logo blur
+    -placeholder text color
+
+[33mcommit a265f51f17eecf9f2ebf49d4e87e27808770cc38[m
+Author: PatrycjaWiza <patrycja.wiza@gmail.com>
+Date:   Sun Jul 10 00:00:38 2022 +0200
+
+    initial
+
+[33mcommit 4f98d426f042612e36ed5cef9a5065893fd18e14[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 9 20:04:45 2022 +0200
+
+    Update chooseCountry.js
+
+[33mcommit c046d255bbf2804aa283a879f0e114c64632f51d[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 9 20:03:25 2022 +0200
+
+    commit
+
+[33mcommit ac50aef9832e1b9229e5eddc1e18a973d217bbc8[m
+Merge: b27b8e0 4fc435f
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 9 19:23:40 2022 +0200
+
+    Merge branch 'main' of https://github.com/rvzdnk/JS-team-projekt-grupa-4
+
+[33mcommit b27b8e0d5833452396b9fb6d072eff1128d39d43[m
+Author: rvzdnk <rafal93zdunek@gmail.com>
+Date:   Sat Jul 9 19:23:36 2022 +0200
+
+    fetch API & countries
+
+[33mcommit 4fc435ff81999dbff2a432c14f6e1abc5e7a37a3[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:52:41 2022 +0200
+
+    del
+
+[33mcommit 6d7c5956facd757578520f4a9a89d246780f8a96[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:52:31 2022 +0200
+
+    del
+
+[33mcommit c2f44bf5f388848e43a9b7f79f871b11fdf3e75d[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:52:19 2022 +0200
+
+    del
+
+[33mcommit 997ae7ad07ae940d1efb8926b4a745eca988baf3[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:52:01 2022 +0200
+
+    del
+    
+    del
+
+[33mcommit 5585e3cf7fc1d7b0613bf6c2c8cafa91da32f6db[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:51:36 2022 +0200
+
+    del
+
+[33mcommit 58ee94c0f24ae584859e13707c990967085ec673[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:51:28 2022 +0200
+
+    del
+
+[33mcommit 16b894b08fe4a415f3697a159b21a09edb98176d[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:51:20 2022 +0200
+
+    del
+
+[33mcommit 0143e5a2ae31e5e7716fdab21ff54510202089be[m
+Author: Arkadiusz-Kruk <92742646+Arkadiusz-Kruk@users.noreply.github.com>
+Date:   Sat Jul 9 16:51:12 2022 +0

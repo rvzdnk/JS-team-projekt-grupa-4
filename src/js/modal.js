@@ -7,19 +7,19 @@ const qs = name => document.querySelector(name);
 const modalPlace = qs('.place-for-modal');
 const searchInput = qs('.form__search');
 const eventsList = qs('.events');
-
+const body = qs('body');
 // listeners
 eventsList.addEventListener('click', getEventId);
 
 document.addEventListener('keydown', e => {
   if (e.code === 'Escape') {
     modalPlace.innerHTML = '';
+    body.classList.remove('scroll--lock');
   }
   return;
 });
 
 // functions
-
 function getEventId(e) {
   const li = e.target.closest('li');
   const id = li.dataset.index;
@@ -36,6 +36,7 @@ const whoFn = data => {
 };
 
 const renderModal = data => {
+  body.classList.add('scroll--lock');
   const eventData = {
     ...data,
     smallImg: data.images.find(img => img.width === 305),
@@ -80,6 +81,7 @@ const closeModal = () => {
 const clearModal = () => {
   try {
     modalPlace.innerHTML = ``;
+    body.classList.remove('scroll--lock');
   } catch (error) {
     console.log(error);
   }

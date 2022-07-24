@@ -53,7 +53,10 @@
   position: relative;
 }
 
-.form__search{
+.form__search,
+.form__dropdown {
+
+
   border: none;
   background: transparent;
   font-size: 16px;
@@ -63,7 +66,13 @@
   width: 270px;
 }
 
-.form__search__container{
+.form__dropdown__container option {
+  background-color: lightgray;
+}
+
+.form__search__container,
+.form__dropdown {
+
   text-align: left;
   padding-left: 30px;
 }
@@ -282,4 +291,9 @@
     background-size: cover;
     min-height: 446px;
   }
+}
+select {
+  -webkit-appearance: none; /*Removes default chrome and safari style*/
+  -moz-appearance: none; /* Removes Default Firefox style*/
+  appearance: none;
 }

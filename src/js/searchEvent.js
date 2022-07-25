@@ -91,3 +91,18 @@ export function renderEvents(data) {
 }
 
 searchForm.addEventListener('submit', searchEvents);
+
+Notify.init({
+  width: '300px',
+  distance: '50px',
+  rtl: false,
+  fontFamily: 'Montserat',
+  useFontAwesome: false,
+  fontAwesomeIconStyle: 'basic',
+  fontAwesomeIconSize: '34px',
+  failure: {
+    background: 'rgba(205,205,205,0.3)',
+    notiflixIconColor: '#939393',
+    textColor: '#939393',
+  },
+});

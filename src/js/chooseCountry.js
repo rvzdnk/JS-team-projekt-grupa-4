@@ -1,22 +1,15 @@
 // Function which help to select country in header
 import { countries } from "./countryList";
 
-const selectDrop = document.querySelector(".dropdown__options");
+const selectDrop = document.querySelector('#countries');
+
 
 
 export function chooseCountries(e) {
         const markup = countries
         .sort((a,b)=> (a.name.localeCompare(b.name)))
         .map((country) =>
-        `<div class="dropdown__option">
-                <input type="radio" 
-                        class="dropdown__input" 
-                        id="${country.name}" 
-                        name="country"
-                        value="${country.countryCode}"
-                        />
-                <label for="${country.countryCode}">${country.name}</label>  
-         </div>`)
+        `<option value ="${country.countryCode}">${country.name}</option>`)
         .join("");
 
         selectDrop.insertAdjacentHTML('beforeend',markup);

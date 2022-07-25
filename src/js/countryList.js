@@ -172,7 +172,7 @@ export const countries = [
     countryCode: "JP"
   },
   {
-    name: "Korea",
+    name: "Korea, Republic of",
     countryCode: "KR"
   },
   {

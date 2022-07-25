@@ -28,7 +28,7 @@ document
 
 // Search selector
 
-fetchEvents('concert', 'PL', pageNr)
+fetchEvents('concert', 'GB', pageNr)
   .then(data => {
     // console.log(data);
     renderEvents(data);
